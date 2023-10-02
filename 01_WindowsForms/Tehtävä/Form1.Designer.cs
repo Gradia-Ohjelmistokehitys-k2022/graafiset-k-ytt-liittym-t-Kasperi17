@@ -33,21 +33,21 @@
             button3 = new Button();
             button4 = new Button();
             button5 = new Button();
-            label5 = new Label();
-            textBox1 = new TextBox();
-            label6 = new Label();
-            label7 = new Label();
-            label8 = new Label();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
+            IDlabel = new Label();
+            IDtextBox = new TextBox();
+            Nimilabel = new Label();
+            Julkaisuvuosilabel = new Label();
+            Kestolabel = new Label();
+            NimitextBox = new TextBox();
+            JulkaisupäivätextBox = new TextBox();
+            KestotextBox = new TextBox();
             groupBox1 = new GroupBox();
             groupBox2 = new GroupBox();
             groupBox3 = new GroupBox();
             label1 = new Label();
             numericUpDown2 = new NumericUpDown();
             numericUpDown1 = new NumericUpDown();
-            textBox5 = new TextBox();
+            ArviotextBox = new TextBox();
             menuStrip1 = new MenuStrip();
             tiedostoToolStripMenuItem = new ToolStripMenuItem();
             poistuToolStripMenuItem = new ToolStripMenuItem();
@@ -70,6 +70,7 @@
             button1.TabIndex = 0;
             button1.Text = "Uusi tietue";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click_1;
             // 
             // button2
             // 
@@ -109,82 +110,92 @@
             button5.Text = "Seuraava";
             button5.UseVisualStyleBackColor = true;
             // 
-            // label5
+            // IDlabel
             // 
-            label5.AutoSize = true;
-            label5.Location = new Point(19, 22);
-            label5.Name = "label5";
-            label5.Size = new Size(21, 15);
-            label5.TabIndex = 9;
-            label5.Text = "ID:";
+            IDlabel.AutoSize = true;
+            IDlabel.Location = new Point(19, 22);
+            IDlabel.Name = "IDlabel";
+            IDlabel.Size = new Size(21, 15);
+            IDlabel.TabIndex = 9;
+            IDlabel.Text = "ID:";
             // 
-            // textBox1
+            // IDtextBox
             // 
-            textBox1.Location = new Point(104, 22);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(147, 23);
-            textBox1.TabIndex = 10;
+            IDtextBox.Location = new Point(104, 22);
+            IDtextBox.Name = "IDtextBox";
+            IDtextBox.ReadOnly = true;
+            IDtextBox.Size = new Size(147, 23);
+            IDtextBox.TabIndex = 10;
+            IDtextBox.TextChanged += IDtextBox_TextChanged;
+            IDtextBox.Enter += IDtextBox_Enter;
             // 
-            // label6
+            // Nimilabel
             // 
-            label6.AutoSize = true;
-            label6.Location = new Point(19, 55);
-            label6.Name = "label6";
-            label6.Size = new Size(33, 15);
-            label6.TabIndex = 11;
-            label6.Text = "Nimi";
+            Nimilabel.AutoSize = true;
+            Nimilabel.Location = new Point(19, 55);
+            Nimilabel.Name = "Nimilabel";
+            Nimilabel.Size = new Size(33, 15);
+            Nimilabel.TabIndex = 11;
+            Nimilabel.Text = "Nimi";
             // 
-            // label7
+            // Julkaisuvuosilabel
             // 
-            label7.AutoSize = true;
-            label7.Location = new Point(19, 87);
-            label7.Name = "label7";
-            label7.Size = new Size(76, 15);
-            label7.TabIndex = 12;
-            label7.Text = "Julkaisuvuosi";
+            Julkaisuvuosilabel.AutoSize = true;
+            Julkaisuvuosilabel.Location = new Point(19, 87);
+            Julkaisuvuosilabel.Name = "Julkaisuvuosilabel";
+            Julkaisuvuosilabel.Size = new Size(76, 15);
+            Julkaisuvuosilabel.TabIndex = 12;
+            Julkaisuvuosilabel.Text = "Julkaisuvuosi";
             // 
-            // label8
+            // Kestolabel
             // 
-            label8.AutoSize = true;
-            label8.Location = new Point(19, 124);
-            label8.Name = "label8";
-            label8.Size = new Size(71, 15);
-            label8.TabIndex = 13;
-            label8.Text = "Kesto (min):";
+            Kestolabel.AutoSize = true;
+            Kestolabel.Location = new Point(19, 124);
+            Kestolabel.Name = "Kestolabel";
+            Kestolabel.Size = new Size(71, 15);
+            Kestolabel.TabIndex = 13;
+            Kestolabel.Text = "Kesto (min):";
             // 
-            // textBox2
+            // NimitextBox
             // 
-            textBox2.Location = new Point(104, 55);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(193, 23);
-            textBox2.TabIndex = 14;
+            NimitextBox.Location = new Point(104, 55);
+            NimitextBox.Name = "NimitextBox";
+            NimitextBox.Size = new Size(193, 23);
+            NimitextBox.TabIndex = 14;
+            NimitextBox.Enter += NimitextBox_Enter;
+            NimitextBox.Leave += NimitextBox_Leave;
             // 
-            // textBox3
+            // JulkaisupäivätextBox
             // 
-            textBox3.Location = new Point(104, 87);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(100, 23);
-            textBox3.TabIndex = 15;
+            JulkaisupäivätextBox.Location = new Point(104, 87);
+            JulkaisupäivätextBox.Name = "JulkaisupäivätextBox";
+            JulkaisupäivätextBox.Size = new Size(100, 23);
+            JulkaisupäivätextBox.TabIndex = 15;
+            JulkaisupäivätextBox.TextChanged += JulkaisupäivätextBox_TextChanged;
+            JulkaisupäivätextBox.Enter += JulkaisupäivätextBox_Enter;
+            JulkaisupäivätextBox.Leave += JulkaisupäivätextBox_Leave;
             // 
-            // textBox4
+            // KestotextBox
             // 
-            textBox4.Location = new Point(104, 124);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(100, 23);
-            textBox4.TabIndex = 16;
+            KestotextBox.Location = new Point(104, 124);
+            KestotextBox.Name = "KestotextBox";
+            KestotextBox.Size = new Size(100, 23);
+            KestotextBox.TabIndex = 16;
+            KestotextBox.Enter += KestotextBox_Enter;
+            KestotextBox.Leave += KestotextBox_Leave;
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(textBox1);
-            groupBox1.Controls.Add(label5);
+            groupBox1.Controls.Add(IDtextBox);
+            groupBox1.Controls.Add(IDlabel);
             groupBox1.Controls.Add(button5);
-            groupBox1.Controls.Add(textBox4);
+            groupBox1.Controls.Add(KestotextBox);
             groupBox1.Controls.Add(button4);
-            groupBox1.Controls.Add(label6);
-            groupBox1.Controls.Add(textBox3);
-            groupBox1.Controls.Add(label7);
-            groupBox1.Controls.Add(textBox2);
-            groupBox1.Controls.Add(label8);
+            groupBox1.Controls.Add(Nimilabel);
+            groupBox1.Controls.Add(JulkaisupäivätextBox);
+            groupBox1.Controls.Add(Julkaisuvuosilabel);
+            groupBox1.Controls.Add(NimitextBox);
+            groupBox1.Controls.Add(Kestolabel);
             groupBox1.Location = new Point(11, 40);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(310, 272);
@@ -209,7 +220,7 @@
             groupBox3.Controls.Add(label1);
             groupBox3.Controls.Add(numericUpDown2);
             groupBox3.Controls.Add(numericUpDown1);
-            groupBox3.Controls.Add(textBox5);
+            groupBox3.Controls.Add(ArviotextBox);
             groupBox3.Location = new Point(12, 318);
             groupBox3.Name = "groupBox3";
             groupBox3.Size = new Size(284, 165);
@@ -240,13 +251,16 @@
             numericUpDown1.Size = new Size(52, 23);
             numericUpDown1.TabIndex = 1;
             // 
-            // textBox5
+            // ArviotextBox
             // 
-            textBox5.Location = new Point(12, 22);
-            textBox5.Multiline = true;
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(272, 106);
-            textBox5.TabIndex = 0;
+            ArviotextBox.Location = new Point(12, 22);
+            ArviotextBox.Multiline = true;
+            ArviotextBox.Name = "ArviotextBox";
+            ArviotextBox.Size = new Size(272, 106);
+            ArviotextBox.TabIndex = 0;
+            ArviotextBox.TextChanged += ArviotextBox_TextChanged;
+            ArviotextBox.Enter += ArviotextBox_Enter;
+            ArviotextBox.Leave += ArviotextBox_Leave;
             // 
             // menuStrip1
             // 
@@ -269,6 +283,7 @@
             poistuToolStripMenuItem.Name = "poistuToolStripMenuItem";
             poistuToolStripMenuItem.Size = new Size(107, 22);
             poistuToolStripMenuItem.Text = "Poistu";
+            poistuToolStripMenuItem.Click += poistuToolStripMenuItem_Click;
             // 
             // tietojaToolStripMenuItem
             // 
@@ -288,6 +303,7 @@
             infoToolStripMenuItem.Name = "infoToolStripMenuItem";
             infoToolStripMenuItem.Size = new Size(205, 22);
             infoToolStripMenuItem.Text = "Info";
+            infoToolStripMenuItem.Click += infoToolStripMenuItem_Click;
             // 
             // Form1
             // 
@@ -322,18 +338,18 @@
         private Button button3;
         private Button button4;
         private Button button5;
-        private Label label5;
-        private TextBox textBox1;
-        private Label label6;
-        private Label label7;
-        private Label label8;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private TextBox textBox4;
+        private Label IDlabel;
+        private TextBox IDtextBox;
+        private Label Nimilabel;
+        private Label Julkaisuvuosilabel;
+        private Label Kestolabel;
+        private TextBox NimitextBox;
+        private TextBox JulkaisupäivätextBox;
+        private TextBox KestotextBox;
         private GroupBox groupBox1;
         private GroupBox groupBox2;
         private GroupBox groupBox3;
-        private TextBox textBox5;
+        private TextBox ArviotextBox;
         private Label label1;
         private NumericUpDown numericUpDown2;
         private NumericUpDown numericUpDown1;
