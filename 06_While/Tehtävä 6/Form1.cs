@@ -15,16 +15,16 @@ namespace Tehtävä_6
 
                 while (continueLoop)
                 {
-                    // Kysy käyttäjältä, haluaako hän jatkaa luuppia
-                    DialogResult result = MessageBox.Show("Haluatko jatkaa luuppia?", "Kysymys", MessageBoxButtons.YesNo);
+                   
+                    DialogResult result = MessageBox.Show("Haluatko jatkaa luuppia?", "Huom!", MessageBoxButtons.YesNo);
 
                     if (result == DialogResult.Yes)
                     {
-                        // Käyttäjä haluaa jatkaa, suorita uusi kierros luupissa
+                        
                         MessageBox.Show("Jatketaan luuppia!");
                     }
                     else if (result == DialogResult.No)
-                    {// Käyttäjä ei halua jatkaa, poistu luupista
+                    {
                         
                         MessageBox.Show("Poistutaan luupista.");
                         continueLoop = false;
