@@ -1,6 +1,6 @@
-﻿namespace Tehtävä_5
+﻿namespace Tehtävä_6
 {
-    partial class Pääformi
+    partial class Form1
     {
         /// <summary>
         ///  Required designer variable.
@@ -29,61 +29,31 @@
         private void InitializeComponent()
         {
             button1 = new Button();
-            textBox1 = new TextBox();
-            label1 = new Label();
             SuspendLayout();
             // 
             // button1
             // 
-            button1.Location = new Point(346, 153);
-            button1.Margin = new Padding(4, 5, 4, 5);
+            button1.Location = new Point(46, 82);
             button1.Name = "button1";
-            button1.Size = new Size(100, 50);
+            button1.Size = new Size(112, 34);
             button1.TabIndex = 0;
             button1.Text = "Start";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(106, 162);
-            textBox1.Margin = new Padding(4, 5, 4, 5);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(141, 31);
-            textBox1.TabIndex = 1;
-            textBox1.TextChanged += textBox1_TextChanged;
-            // 
-            // label1
-            // 
-            label1.Font = new Font("Segoe UI", 25F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(317, 224);
-            label1.Margin = new Padding(4, 0, 4, 0);
-            label1.MaximumSize = new Size(500, 1000);
-            label1.Name = "label1";
-            label1.Size = new Size(171, 60);
-            label1.TabIndex = 2;
-            label1.Text = "laskuri";
-            label1.Click += label1_Click;
-            // 
-            // Pääformi
+            // Form1
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1143, 750);
-            Controls.Add(label1);
-            Controls.Add(textBox1);
+            ClientSize = new Size(800, 450);
             Controls.Add(button1);
-            Margin = new Padding(4, 5, 4, 5);
-            Name = "Pääformi";
-            Text = "Form1";
+            Name = "Form1";
+            Text = "Pääformi";
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
 
         private Button button1;
-        private TextBox textBox1;
-        private Label label1;
     }
 }
