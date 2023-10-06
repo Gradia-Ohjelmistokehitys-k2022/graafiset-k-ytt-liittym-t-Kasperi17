@@ -12,7 +12,7 @@ namespace Tehtävä_7
         {
             if (int.TryParse(this.Controls["textBox1"].Text, out int size))
             {
-                // Luo taulukko annetulla koolla
+                
                 array = new int[size];
             }
         }
