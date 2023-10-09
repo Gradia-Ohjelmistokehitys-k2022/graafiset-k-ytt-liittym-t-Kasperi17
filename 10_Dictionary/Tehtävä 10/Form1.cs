@@ -62,5 +62,10 @@ namespace Tehtävä_10
         {
 
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
