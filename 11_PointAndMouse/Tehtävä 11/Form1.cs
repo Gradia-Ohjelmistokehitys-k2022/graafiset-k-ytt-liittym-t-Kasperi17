@@ -95,6 +95,17 @@ namespace Tehtävä_11
             }
 
         }
+
+        private void Form1_KeyUp(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+           
+
+        }
     }
 }
 
