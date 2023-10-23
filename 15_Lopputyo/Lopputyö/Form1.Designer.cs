@@ -120,12 +120,13 @@
             // 
             this.tallennaToolStripMenuItem.Name = "tallennaToolStripMenuItem";
             this.tallennaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.tallennaToolStripMenuItem.Text = "Save as";
+            this.tallennaToolStripMenuItem.Text = "Close";
+            this.tallennaToolStripMenuItem.Click += new System.EventHandler(this.tallennaToolStripMenuItem_Click);
             // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.closeToolStripMenuItem.Text = "Close";
             // 
             // label1
@@ -154,6 +155,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.Text = "Matikkapeli";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.contextMenuStrip1.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
