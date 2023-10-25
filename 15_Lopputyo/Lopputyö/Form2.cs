@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,12 +16,14 @@ namespace Lopputyö
         private Random random = new Random();
         List<string> list = new List<string>();
         public static Form2 instance;
+       
 
         private int kysymykset;
         private int ensimmainenLuku;
         private int toinenLuku;
         private int vastaus;
         int oikeinVastatut = 0;
+        int kayttajaParasTulos = 0;
         public Form2()
         {
             InitializeComponent();
@@ -28,6 +31,12 @@ namespace Lopputyö
             button1.Click += new System.EventHandler(button1_Click);
 
         }
+       
+        
+
+
+
+
 
         private void label2_Click(object sender, EventArgs e)
         {
@@ -49,9 +58,6 @@ namespace Lopputyö
 
         }
 
-
-
-        
 
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
         {
@@ -94,5 +100,44 @@ namespace Lopputyö
             Form1 form1 = new Form1();
             form1.Show();
         }
+
+        private void tallennaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Tekstitiedostot|*.txt|Kaikki tiedostot|*.*";
+
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string fileName = saveFileDialog.FileName;
+                string content = label3.Text;
+
+                try
+                {
+                    File.WriteAllText(fileName, content);
+                    MessageBox.Show("Tiedosto tallennettu onnistuneesti.", "Tallennus onnistui", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Virhe tallennettaessa tiedostoa: " + ex.Message, "Virhe", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    
+                }
+                
+            }
+        }
+        public void PaivitaParasTulos(int uusiTulos)
+        {
+            if (uusiTulos > kayttajaParasTulos)
+            {
+                kayttajaParasTulos = uusiTulos;
+                label3.Text = "Paras tulos: " + kayttajaParasTulos;
+            }
+        }
+
+
+
+
+
+
+
     }
 }

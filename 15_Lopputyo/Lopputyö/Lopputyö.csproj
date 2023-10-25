@@ -110,5 +110,8 @@
   <ItemGroup>
     <None Include="Resources\MatemaattistenAineidenOpettaja.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\_09ea10b0-6247-4845-86c7-556a2223f906.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -26,6 +26,9 @@ namespace Lopputyö
             InitializeComponent();
             instance = this;
             button1.Click += new System.EventHandler(button1_Click);
+
+
+
         }
 
 
@@ -114,6 +117,17 @@ namespace Lopputyö
                 {
                     MessageBox.Show("Virhe tallennettaessa tiedostoa: " + ex.Message, "Virhe", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+
+
+
+
+
+
+
+
+
+
+
             }
 
         }
