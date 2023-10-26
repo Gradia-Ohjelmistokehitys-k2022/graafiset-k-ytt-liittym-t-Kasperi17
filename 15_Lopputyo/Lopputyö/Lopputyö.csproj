@@ -107,11 +107,18 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <None Include="Resources\MatemaattistenAineidenOpettaja.jpg" />
+    <None Include="Resources\OIG %282%29.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\_09ea10b0-6247-4845-86c7-556a2223f906.jpg" />
+    <None Include="Resources\OIG %281%29.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\OIG.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\OIG.kSapZ.n.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

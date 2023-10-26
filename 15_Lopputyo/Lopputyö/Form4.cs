@@ -21,12 +21,13 @@ namespace Lopputyö
         private int toinenLuku;
         private int vastaus;
         int oikeinVastatut = 0;
+        private int parasTulos = 0;
         public Form4()
         {
             InitializeComponent();
             instance = this;
             button1.Click += new System.EventHandler(button1_Click);
-
+            LataaParasTulos();
 
 
         }
@@ -51,6 +52,62 @@ namespace Lopputyö
 
         }
 
+        public void PaivitaParasTulos(int uusiTulos)
+        {
+            if (uusiTulos > parasTulos)
+            {
+                parasTulos = uusiTulos;
+                label5.Text = "Paras tulos: " + parasTulos;
+                TallennaParasTulos();
+            }
+        }
+
+
+
+        private void PelaajaSaavuttiUudenTuloksen(int uusiTulos)
+        {
+            PaivitaParasTulos(uusiTulos);
+        }
+
+
+        private string TallennustiedostonNimi()
+        {
+            // Voit käyttää esimerkiksi Formin nimeä tallennustiedoston osana.
+            return "parastulos_Form4.txt";
+        }
+
+
+        private void TallennaParasTulos()
+        {
+            try
+            {
+                File.WriteAllText("parastulos.txt", parasTulos.ToString());
+            }
+            catch (IOException ex)
+            {
+                MessageBox.Show("Virhe tallennettaessa tulosta: " + ex.Message, "Virhe", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void LataaParasTulos()
+        {
+            if (File.Exists("parastulos.txt"))
+            {
+                try
+                {
+                    string tallennettuTulos = File.ReadAllText("parastulos.txt");
+                    if (int.TryParse(tallennettuTulos, out int tulos))
+                    {
+                        parasTulos = tulos;
+                        label5.Text = "Paras tulos: " + parasTulos;
+                    }
+                }
+                catch (IOException ex)
+                {
+                    MessageBox.Show("Virhe ladattaessa tulosta: " + ex.Message, "Virhe", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
 
 
 
@@ -64,7 +121,8 @@ namespace Lopputyö
                     if (textBox1.Text == vastaus.ToString())
                     {
                         MessageBox.Show("Oikein!");
-                        oikeinVastatut++; // Kasvata oikein vastattujen kysymysten määrää
+                        oikeinVastatut++;
+                        PelaajaSaavuttiUudenTuloksen(oikeinVastatut);
                     }
                     else
                     {

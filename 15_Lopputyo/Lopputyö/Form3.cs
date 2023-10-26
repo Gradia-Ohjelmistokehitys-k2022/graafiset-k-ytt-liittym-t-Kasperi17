@@ -19,6 +19,7 @@ namespace Lopputyö
             InitializeComponent();
             instance = this;
             button1.Click += new System.EventHandler(button1_Click);
+            LataaParasTulos();
         }
         private Random random = new Random();
         List<string> list = new List<string>();
@@ -27,6 +28,7 @@ namespace Lopputyö
         private int toinenLuku;
         private int vastaus;
         int oikeinVastatut = 0;
+        private int parasTulos = 0;
 
 
 
@@ -50,6 +52,66 @@ namespace Lopputyö
 
 
         }
+        public void PaivitaParasTulos(int uusiTulos)
+        {
+            if (uusiTulos > parasTulos)
+            {
+                parasTulos = uusiTulos;
+                label5.Text = "Paras tulos: " + parasTulos;
+                TallennaParasTulos();
+            }
+        }
+        private void PelaajaSaavuttiUudenTuloksen(int uusiTulos)
+        {
+            PaivitaParasTulos(uusiTulos);
+        }
+
+        private string TallennustiedostonNimi()
+        {
+            // Voit käyttää esimerkiksi Formin nimeä tallennustiedoston osana.
+            return "parastulos_Form3.txt";
+        }
+
+
+
+        private void LataaParasTulos()
+        {
+            if (File.Exists("parastulos.txt"))
+            {
+                try
+                {
+                    string tallennettuTulos = File.ReadAllText("parastulos.txt");
+                    if (int.TryParse(tallennettuTulos, out int tulos))
+                    {
+                        parasTulos = tulos;
+                        label5.Text = "Paras tulos: " + parasTulos;
+                    }
+                }
+                catch (IOException ex)
+                {
+                    MessageBox.Show("Virhe ladattaessa tulosta: " + ex.Message, "Virhe", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+
+        private void TallennaParasTulos()
+        {
+            try
+            {
+                File.WriteAllText("parastulos.txt", parasTulos.ToString());
+            }
+            catch (IOException ex)
+            {
+                MessageBox.Show("Virhe tallennettaessa tulosta: " + ex.Message, "Virhe", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+
+
+
+
 
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
         {
@@ -61,6 +123,7 @@ namespace Lopputyö
                     {
                         MessageBox.Show("Oikein!");
                         oikeinVastatut++; // Kasvata oikein vastattujen kysymysten määrää
+                        PelaajaSaavuttiUudenTuloksen(oikeinVastatut);
                     }
                     else
                     {
@@ -115,5 +178,6 @@ namespace Lopputyö
                 }
             }
         }
+
     }
 }

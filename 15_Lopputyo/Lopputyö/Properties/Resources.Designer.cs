@@ -63,9 +63,9 @@ namespace Lopputyö.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _09ea10b0_6247_4845_86c7_556a2223f906 {
+        internal static System.Drawing.Bitmap OIG {
             get {
-                object obj = ResourceManager.GetObject("_09ea10b0_6247_4845_86c7_556a2223f906", resourceCulture);
+                object obj = ResourceManager.GetObject("OIG", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,29 @@ namespace Lopputyö.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap MatemaattistenAineidenOpettaja {
+        internal static System.Drawing.Bitmap OIG__1_ {
             get {
-                object obj = ResourceManager.GetObject("MatemaattistenAineidenOpettaja", resourceCulture);
+                object obj = ResourceManager.GetObject("OIG__1_", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap OIG__2_ {
+            get {
+                object obj = ResourceManager.GetObject("OIG (2)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap OIG_kSapZ_n {
+            get {
+                object obj = ResourceManager.GetObject("OIG_kSapZ_n", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

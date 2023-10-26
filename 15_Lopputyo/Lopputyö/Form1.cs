@@ -27,13 +27,16 @@ namespace Lopputyö
         }
         public void PaivitaParasTulos(int uusiTulos)
         {
-            if (uusiTulos > kayttajaParasTulos)
-            {
-                kayttajaParasTulos = uusiTulos;
-                label3.Text = "Paras tulos: " + kayttajaParasTulos;
-            }
+            
+            
+                
         }
-       
+        private string TallennustiedostonNimi()
+        {
+            // Voit käyttää esimerkiksi Formin nimeä tallennustiedoston osana.
+            return "parastulos_Form1.txt";
+        }
+
 
 
 
