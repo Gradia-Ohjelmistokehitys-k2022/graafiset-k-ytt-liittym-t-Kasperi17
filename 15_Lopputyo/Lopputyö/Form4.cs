@@ -30,7 +30,7 @@ namespace Lopputyö
         private void label2_Click_1(object sender, EventArgs e)
         {
 
-            if (kysymykset < 10)
+            if (kysymykset < 11)
             {
                 ensimmainenLuku = random.Next(1, 10);
                 toinenLuku = random.Next(1, 10);
@@ -39,7 +39,7 @@ namespace Lopputyö
                 textBox1.Text = "";
                 kysymykset++;
             }
-            if (kysymykset == 10)
+            if (kysymykset == 11)
             {
                 MessageBox.Show("Olet ratkaissut 10 kysymystä");
             }
@@ -106,7 +106,7 @@ namespace Lopputyö
 
             if (e.KeyCode == Keys.Enter)
             {
-                if (kysymykset < 10)
+                if (kysymykset < 11)
                 {
                     if (textBox1.Text == vastaus.ToString())
                     {

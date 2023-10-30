@@ -107,7 +107,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\Ketsa - Firstly.wav" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\OIG %282%29.jpg" />
   </ItemGroup>

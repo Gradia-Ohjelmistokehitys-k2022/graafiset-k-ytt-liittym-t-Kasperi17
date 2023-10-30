@@ -8,7 +8,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using System.Media;
 namespace Lopputyö
 {
     public partial class Form1 : Form
@@ -21,15 +21,16 @@ namespace Lopputyö
         private int suurinTulos;
         public Form1()
         {
-          
+            musiikki();
             InitializeComponent();
             instance = this;
         }
-        public void PaivitaParasTulos(int uusiTulos)
+        private void musiikki()
         {
-            
-            
-                
+            SoundPlayer musa = new SoundPlayer(Lopputyö.Properties.Resources.Ketsa___Firstly);
+            musa.Play();
+
+
         }
         private string TallennustiedostonNimi()
         {
@@ -42,9 +43,13 @@ namespace Lopputyö
 
         private void miinusbutton1_Click(object sender, EventArgs e)
         {
+            
             Form2 form = new Form2();
             this.Hide();
             form.Show();
+
+            
+           
             
         }
 
@@ -81,6 +86,9 @@ namespace Lopputyö
 
         }
         
+
+
+
 
 
 
