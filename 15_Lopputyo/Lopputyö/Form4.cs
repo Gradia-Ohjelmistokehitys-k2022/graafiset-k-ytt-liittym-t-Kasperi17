@@ -1,12 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Lopputyö
@@ -70,18 +64,14 @@ namespace Lopputyö
         }
 
 
-        private string TallennustiedostonNimi()
-        {
-            // Voit käyttää esimerkiksi Formin nimeä tallennustiedoston osana.
-            return "parastulos_Form4.txt";
-        }
+       
 
 
         private void TallennaParasTulos()
         {
             try
             {
-                File.WriteAllText("parastulos.txt", parasTulos.ToString());
+                File.WriteAllText("parastulos3.txt", parasTulos.ToString());
             }
             catch (IOException ex)
             {
@@ -90,15 +80,15 @@ namespace Lopputyö
         }
         private void LataaParasTulos()
         {
-            if (File.Exists("parastulos.txt"))
+            if (File.Exists("parastulos3.txt"))
             {
                 try
                 {
-                    string tallennettuTulos = File.ReadAllText("parastulos.txt");
+                    string tallennettuTulos = File.ReadAllText("parastulos3.txt");
                     if (int.TryParse(tallennettuTulos, out int tulos))
                     {
                         parasTulos = tulos;
-                        label5.Text = "Paras tulos: " + parasTulos;
+                        label5.Text = "Ennätys tulos: " + parasTulos;
                     }
                 }
                 catch (IOException ex)
@@ -158,17 +148,17 @@ namespace Lopputyö
 
         private void tallennaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "Tekstitiedostot|*.txt|Kaikki tiedostot|*.*";
+            SaveFileDialog tallenna = new SaveFileDialog();
+            tallenna.Filter = "Tekstitiedostot|*.txt|Kaikki tiedostot|*.*";
 
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            if (tallenna.ShowDialog() == DialogResult.OK)
             {
-                string fileName = saveFileDialog.FileName;
-                string content = label3.Text;
+                string tiedostoNimi = tallenna.FileName;
+                string sisältö = label3.Text;
 
                 try
                 {
-                    File.WriteAllText(fileName, content);
+                    File.WriteAllText(tiedostoNimi, sisältö);
                     MessageBox.Show("Tiedosto tallennettu onnistuneesti.", "Tallennus onnistui", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
@@ -179,15 +169,15 @@ namespace Lopputyö
 
 
 
-
-
-
-
-
-
-
             }
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            parasTulos = 0;
+            label5.Text = "Paras tulos: " + parasTulos;
+            TallennaParasTulos();
         }
     }
 }

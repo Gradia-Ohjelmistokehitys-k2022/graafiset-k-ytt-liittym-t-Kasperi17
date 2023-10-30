@@ -32,29 +32,20 @@ namespace Lopputyö
             LataaParasTulos();
 
         }
-        public void PaivitaParasTulos(int uusiTulos)
+        
+
+
+        private void PelaajaSaavuttiUudenTuloksen(int uusiTulos)
         {
             if (uusiTulos > parasTulos)
             {
                 parasTulos = uusiTulos;
                 label5.Text = "Paras tulos: " + parasTulos;
+
+             
                 TallennaParasTulos();
             }
-        }
 
-        private string TallennustiedostonNimi()
-        {
-            // Voit käyttää esimerkiksi Formin nimeä tallennustiedoston osana.
-            return "parastulos_Form2.txt";
-        }
-
-
-
-
-
-        private void PelaajaSaavuttiUudenTuloksen(int uusiTulos)
-        {
-            PaivitaParasTulos(uusiTulos);
         }
 
         private void TallennaParasTulos()
@@ -161,17 +152,17 @@ namespace Lopputyö
 
         private void tallennaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "Tekstitiedostot|*.txt|Kaikki tiedostot|*.*";
+            SaveFileDialog tallenna = new SaveFileDialog();
+            tallenna.Filter = "Tekstitiedostot|*.txt|Kaikki tiedostot|*.*";
 
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            if (tallenna.ShowDialog() == DialogResult.OK)
             {
-                string fileName = saveFileDialog.FileName;
-                string content = label3.Text;
+                string tiedostoNimi = tallenna.FileName;
+                string sisältö = label3.Text;
 
                 try
                 {
-                    File.WriteAllText(fileName, content);
+                    File.WriteAllText(tiedostoNimi, sisältö);
                     MessageBox.Show("Tiedosto tallennettu onnistuneesti.", "Tallennus onnistui", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
@@ -182,13 +173,12 @@ namespace Lopputyö
                 
             }
         }
-        
 
-
-
-
-
-
-
+        private void button2_Click(object sender, EventArgs e)
+        {
+            parasTulos = 0;
+            label5.Text = "Paras tulos: " + parasTulos;
+            TallennaParasTulos();
+        }
     }
 }

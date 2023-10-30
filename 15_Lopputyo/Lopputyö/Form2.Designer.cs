@@ -40,6 +40,7 @@
             this.takaisinPäävalikkoonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tallennaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label5 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,7 +50,7 @@
             this.label1.Location = new System.Drawing.Point(20, 51);
             this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(91, 20);
+            this.label1.Size = new System.Drawing.Size(139, 29);
             this.label1.TabIndex = 0;
             this.label1.Text = "Miinuslasku";
             // 
@@ -58,7 +59,7 @@
             this.textBox1.Location = new System.Drawing.Point(327, 116);
             this.textBox1.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(61, 26);
+            this.textBox1.Size = new System.Drawing.Size(61, 35);
             this.textBox1.TabIndex = 1;
             this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
             // 
@@ -69,7 +70,7 @@
             this.label2.Location = new System.Drawing.Point(243, 120);
             this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(43, 18);
+            this.label2.Size = new System.Drawing.Size(63, 26);
             this.label2.TabIndex = 2;
             this.label2.Text = "lasku";
             this.label2.Click += new System.EventHandler(this.label2_Click);
@@ -81,7 +82,7 @@
             this.label3.Location = new System.Drawing.Point(440, 124);
             this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(45, 18);
+            this.label3.Size = new System.Drawing.Size(64, 26);
             this.label3.TabIndex = 3;
             this.label3.Text = "Tulos";
             this.label3.Click += new System.EventHandler(this.label3_Click);
@@ -104,7 +105,7 @@
             this.label4.Location = new System.Drawing.Point(161, 54);
             this.label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(449, 13);
+            this.label4.Size = new System.Drawing.Size(665, 20);
             this.label4.TabIndex = 7;
             this.label4.Text = "\"napauta lasku kohtaa saadaksesi lasku ja tulos kohtaa laskettuasi 10 kymmenen ky" +
     "symystä\"";
@@ -112,12 +113,13 @@
             // menuStrip1
             // 
             this.menuStrip1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.suljeToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(992, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(992, 33);
             this.menuStrip1.TabIndex = 8;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -127,20 +129,20 @@
             this.takaisinPäävalikkoonToolStripMenuItem,
             this.tallennaToolStripMenuItem});
             this.suljeToolStripMenuItem.Name = "suljeToolStripMenuItem";
-            this.suljeToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
+            this.suljeToolStripMenuItem.Size = new System.Drawing.Size(73, 29);
             this.suljeToolStripMenuItem.Text = "Menu";
             // 
             // takaisinPäävalikkoonToolStripMenuItem
             // 
             this.takaisinPäävalikkoonToolStripMenuItem.Name = "takaisinPäävalikkoonToolStripMenuItem";
-            this.takaisinPäävalikkoonToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.takaisinPäävalikkoonToolStripMenuItem.Size = new System.Drawing.Size(217, 34);
             this.takaisinPäävalikkoonToolStripMenuItem.Text = "Päävalikkoon";
             this.takaisinPäävalikkoonToolStripMenuItem.Click += new System.EventHandler(this.takaisinPäävalikkoonToolStripMenuItem_Click);
             // 
             // tallennaToolStripMenuItem
             // 
             this.tallennaToolStripMenuItem.Name = "tallennaToolStripMenuItem";
-            this.tallennaToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.tallennaToolStripMenuItem.Size = new System.Drawing.Size(217, 34);
             this.tallennaToolStripMenuItem.Text = "Tallenna";
             this.tallennaToolStripMenuItem.Click += new System.EventHandler(this.tallennaToolStripMenuItem_Click);
             // 
@@ -149,16 +151,28 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(20, 159);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(67, 20);
+            this.label5.Size = new System.Drawing.Size(97, 29);
             this.label5.TabIndex = 9;
             this.label5.Text = "Ennätys";
             // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(15, 211);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(102, 69);
+            this.button2.TabIndex = 10;
+            this.button2.Text = "resetoi ennätys";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // Form2
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(992, 941);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.button1);
@@ -192,5 +206,6 @@
         private System.Windows.Forms.ToolStripMenuItem takaisinPäävalikkoonToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tallennaToolStripMenuItem;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button button2;
     }
 }
