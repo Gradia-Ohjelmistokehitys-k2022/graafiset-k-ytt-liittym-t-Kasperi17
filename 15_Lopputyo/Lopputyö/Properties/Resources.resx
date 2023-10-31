@@ -118,6 +118,12 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="for_elevator_jazz_music_124005" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\for-elevator-jazz-music-124005.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="in_the_cafe_with_coffee_after_lunch_140_173156" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\in-the-cafe-with-coffee-after-lunch-140-173156.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="Ketsa___Firstly" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Ketsa - Firstly.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>

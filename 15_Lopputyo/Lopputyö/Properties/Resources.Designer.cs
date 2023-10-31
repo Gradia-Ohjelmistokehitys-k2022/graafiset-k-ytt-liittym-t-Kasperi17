@@ -63,6 +63,24 @@ namespace Lopputyö.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
+        internal static System.IO.UnmanagedMemoryStream for_elevator_jazz_music_124005 {
+            get {
+                return ResourceManager.GetStream("for_elevator_jazz_music_124005", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream in_the_cafe_with_coffee_after_lunch_140_173156 {
+            get {
+                return ResourceManager.GetStream("in_the_cafe_with_coffee_after_lunch_140_173156", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
         internal static System.IO.UnmanagedMemoryStream Ketsa___Firstly {
             get {
                 return ResourceManager.GetStream("Ketsa___Firstly", resourceCulture);
