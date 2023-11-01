@@ -80,80 +80,6 @@ namespace Lopputyö
                 }
             }
         }
-
-
-
-
-
-
-
-        
-
-        
-        private void lasku1()
-        {
-            if (kysymykset < 11)
-            {
-                ensimmainenLuku = random.Next(1, 10);
-                toinenLuku = random.Next(1, 10);
-                vastaus = ensimmainenLuku - toinenLuku;
-                Lasku.Text = ensimmainenLuku + " - " + toinenLuku + " = ";
-                textBox1.Text = "";
-                kysymykset++;
-                
-            }
-            if (kysymykset == 11)
-            {
-                MessageBox.Show("Olet ratkaissut 10 kysymystä");
-            }
-
-        }
-
-       
-
-        private void textBox1_KeyDown(object sender, KeyEventArgs e)
-        {   
-
-            if (e.KeyCode == Keys.Enter)
-            {
-                if (kysymykset < 11)
-                {
-                    if (textBox1.Text == vastaus.ToString())
-                    {
-                        MessageBox.Show("Oikein!");
-                        oikeinVastatut++; 
-                        PelaajaSaavuttiUudenTuloksen(oikeinVastatut);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Väärin.");
-                    }
-                    lasku1();
-                }
-            }
-
-
-        }
-        private void ResetoiEnnätys_Click(object sender, EventArgs e)
-        {
-            parasTulos = 0;
-            label5.Text = "Paras tulos: " + parasTulos;
-            TallennaParasTulos();
-        }
-        private void Tulos_Click(object sender, EventArgs e)
-        {
-            Tulos.Text = "Oikein vastattu: " + oikeinVastatut + " / 10";
-        }
-
-        private void UusiPeli_Click(object sender, EventArgs e)
-        {
-            kysymykset = 0; 
-            oikeinVastatut = 0; 
-
-        }
-
-        
-
         private void tallennaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SaveFileDialog tallenna = new SaveFileDialog();
@@ -175,6 +101,68 @@ namespace Lopputyö
                 
             }
         }
+        private void lasku1()
+        {
+            if (kysymykset < 11)
+            {
+                ensimmainenLuku = random.Next(1, 10);
+                toinenLuku = random.Next(1, 10);
+                vastaus = ensimmainenLuku - toinenLuku;
+                Lasku.Text = ensimmainenLuku + " - " + toinenLuku + " = ";
+                textBox1.Text = "";
+                kysymykset++;
+                
+            }
+            if (kysymykset == 11)
+            {
+                MessageBox.Show("Olet ratkaissut 10 kysymystä");
+            }
+
+        }
+        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        {   
+
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (kysymykset < 11)
+                {
+                    if (textBox1.Text == vastaus.ToString())
+                    {
+                        oikeinVastatut++; 
+                        PelaajaSaavuttiUudenTuloksen(oikeinVastatut);
+                    }
+                    lasku1();
+                    tulos();
+                }
+            }
+
+
+        }
+        private void tulos()
+        {
+            Tulos.Text = oikeinVastatut + " / 10";
+            
+        }
+        private void ResetoiEnnätys_Click(object sender, EventArgs e)
+        {
+            parasTulos = 0;
+            label5.Text = "Paras tulos: " + parasTulos;
+            TallennaParasTulos();
+        }
+        
+
+        private void UusiPeli_Click(object sender, EventArgs e)
+        {
+            kysymykset = 0; 
+            oikeinVastatut = 0;
+            Tulos.Text = "tulos";
+            Lasku.Text = "lasku";
+
+        }
+
+        
+
+        
 
         private void takaisinPäävalikkoonToolStripMenuItem_Click(object sender, EventArgs e)
         {

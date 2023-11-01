@@ -36,8 +36,8 @@ namespace Lopputyö
             {
                 ensimmainenLuku = random.Next(1, 10);
                 toinenLuku = random.Next(1, 10);
-                vastaus = ensimmainenLuku - toinenLuku;
-                Lasku.Text = ensimmainenLuku + " - " + toinenLuku + " = ";
+                vastaus = ensimmainenLuku + toinenLuku;
+                Lasku.Text = ensimmainenLuku + " + " + toinenLuku + " = ";
                 Syötalasku1.Text = "";
                 kysymykset++;
 
@@ -57,22 +57,37 @@ namespace Lopputyö
                 {
                     if (Syötalasku1.Text == vastaus.ToString())
                     {
-                        MessageBox.Show("Oikein!");
+                       
                         oikeinVastatut++;
                         PelaajaSaavuttiUudenTuloksen(oikeinVastatut);
                     }
-                    else
-                    {
-                        MessageBox.Show("Väärin.");
-                    }
                     Lasku1();
+                    Tulos1();
                 }
             }
 
 
 
         }
-        public void PaivitaParasTulos(int uusiTulos)
+         private void Tulos1()
+         {
+            label3.Text = oikeinVastatut + " / 10";
+         }
+
+        private void uusiPeli_Click(object sender, EventArgs e)
+        {
+            kysymykset = 0;
+            oikeinVastatut = 0;
+            label3.Text = "tulos";
+            Lasku.Text = "lasku";
+        }
+
+        private void ResetoiEnnätys_Click(object sender, EventArgs e)
+        {
+            parasTulos = 0;
+            Ennätys.Text = "Paras tulos: " + parasTulos;
+            TallennaParasTulos();
+        }public void PaivitaParasTulos(int uusiTulos)
         {
             if (uusiTulos > parasTulos)
             {
@@ -81,8 +96,6 @@ namespace Lopputyö
                 TallennaParasTulos();
             }
         }
-
-
 
         private void PelaajaSaavuttiUudenTuloksen(int uusiTulos)
         {
@@ -120,27 +133,6 @@ namespace Lopputyö
                 }
             }
         }
-
-
-
-
-       
-
-        private void UusiPeli_Click(object sender, EventArgs e)
-        {
-            label3.Text = "Oikein vastattu: " + oikeinVastatut + " / 10";
-        }
-
-        private void uusiPeli_Click(object sender, EventArgs e)
-        {
-            kysymykset = 0;
-            oikeinVastatut = 0;
-            label3.Text = "tulos";
-            Lasku.Text = "lasku";
-        }
-
-        
-
         private void tallennaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SaveFileDialog tallenna = new SaveFileDialog();
@@ -164,20 +156,12 @@ namespace Lopputyö
             }
 
         }
-
-        private void ResetoiEnnätys_Click(object sender, EventArgs e)
-        {
-            parasTulos = 0;
-            Ennätys.Text = "Paras tulos: " + parasTulos;
-            TallennaParasTulos();
-        }
-
-        
         private void päävalikkoonToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
             Menu form1 = new Menu();
             form1.Show();
+            
             
         }
         private void musiikki()

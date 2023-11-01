@@ -14,7 +14,6 @@ namespace Lopputyö
     public partial class Menu : Form
     {   
         public static Menu instance;
-        List<int> kayttaja = new List<int>();
         private SoundPlayer musa;
         private SoundPlayer musa2;
         public Menu()
@@ -25,12 +24,7 @@ namespace Lopputyö
             
 
         }
-        public void musiikki()
-        {
-            SoundPlayer musa = new SoundPlayer(Lopputyö.Properties.Resources.Ketsa___Firstly);
-            musa.Play();
-
-        }
+        
        
 
         private void miinusbutton1_Click(object sender, EventArgs e)
@@ -84,5 +78,12 @@ namespace Lopputyö
             SoundPlayer musa2 = new SoundPlayer(Lopputyö.Properties.Resources.in_the_cafe_with_coffee_after_lunch_140_173156);
             musa2.Play();
         }
+        public void musiikki()
+        {
+            SoundPlayer musa = new SoundPlayer(Lopputyö.Properties.Resources.Ketsa___Firstly);
+            musa.Play();
+
+        }
+
     }
 }

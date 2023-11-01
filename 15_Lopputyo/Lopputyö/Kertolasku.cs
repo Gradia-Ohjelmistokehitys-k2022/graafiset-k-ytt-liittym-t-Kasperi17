@@ -23,6 +23,7 @@ namespace Lopputyö
         int oikeinVastatut = 0;
         private int parasTulos = 0;
         private Random random = new Random();
+       
         public Kertolasku()
         {
             InitializeComponent();
@@ -41,8 +42,8 @@ namespace Lopputyö
             {
                 ensimmainenLuku = random.Next(1, 10);
                 toinenLuku = random.Next(1, 10);
-                vastaus = ensimmainenLuku - toinenLuku;
-                Lasku.Text = ensimmainenLuku + " - " + toinenLuku + " = ";
+                vastaus = ensimmainenLuku * toinenLuku;
+                Lasku.Text = ensimmainenLuku + " * " + toinenLuku + " = ";
                 Syötälasku.Text = "";
                 kysymykset++;
 
@@ -61,15 +62,12 @@ namespace Lopputyö
                 {
                     if (Syötälasku.Text == vastaus.ToString())
                     {
-                        MessageBox.Show("Oikein!");
+                        
                         oikeinVastatut++; // Kasvata oikein vastattujen kysymysten määrää
                         PelaajaSaavuttiUudenTuloksen(oikeinVastatut);
                     }
-                    else
-                    {
-                        MessageBox.Show("Väärin.");
-                    }
                     lasku1();
+                    Tulos1();
 
                 }
             }
@@ -77,10 +75,10 @@ namespace Lopputyö
 
         }
 
-        private void Tulos_Click(object sender, EventArgs e)
+        private void Tulos1()
         {
-            label3.Text = "Oikein vastattu: " + oikeinVastatut + " / 10";
-        }        
+            Tulos.Text = oikeinVastatut + " / 10";
+        }
         public void PaivitaParasTulos(int uusiTulos)
         {
             if (uusiTulos > parasTulos)
@@ -94,11 +92,6 @@ namespace Lopputyö
         {
             PaivitaParasTulos(uusiTulos);
         }
-
-
-
-
-
         private void LataaParasTulos()
         {
             if (File.Exists("parastulos1.txt"))
@@ -112,9 +105,9 @@ namespace Lopputyö
                         label5.Text = "Paras tulos: " + parasTulos;
                     }
                 }
-                catch (IOException ex)
+                catch (IOException)
                 {
-                    MessageBox.Show("Virhe ladattaessa tulosta: " + ex.Message, "Virhe", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Virhe ladattaessa tulosta: ");
                 }
 
             }
@@ -127,24 +120,12 @@ namespace Lopputyö
             {
                 File.WriteAllText("parastulos1.txt", parasTulos.ToString());
             }
-            catch (IOException ex)
+            catch (IOException)
             {
-                MessageBox.Show("Virhe tallennettaessa tulosta: " + ex.Message, "Virhe", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Virhe tallennettaessa tulosta: ");
             }
         }
 
-
-        
-
-        private void UusiPeli_Click(object sender, EventArgs e)
-        {
-            kysymykset = 0;
-            oikeinVastatut = 0;
-            label3.Text = "tulos";
-            Lasku.Text = "lasku";
-        }
-
-        
 
         private void tallennaToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -152,7 +133,7 @@ namespace Lopputyö
             if (tallenna.ShowDialog() == DialogResult.OK)
             {
                 string tiedostoNimi = tallenna.FileName;
-                string sisältö = label3.Text;
+                string sisältö = Tulos.Text;
 
                 try
                 {
@@ -173,6 +154,13 @@ namespace Lopputyö
             TallennaParasTulos();
         }
 
+        private void UusiPeli_Click(object sender, EventArgs e)
+        {
+            kysymykset = 0;
+            oikeinVastatut = 0;
+            Tulos.Text = "tulos";
+            Lasku.Text = "lasku";
+        }
         private void Musiikki()
         {
             SoundPlayer musa = new SoundPlayer(Lopputyö.Properties.Resources.for_elevator_jazz_music_124005);
@@ -183,7 +171,9 @@ namespace Lopputyö
             this.Close();
             Menu form1 = new Menu();
             form1.Show();
-            musa.Stop();
+            
         }
+
+        
     }
 }

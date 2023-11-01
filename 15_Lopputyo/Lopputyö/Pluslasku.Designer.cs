@@ -34,7 +34,6 @@
             this.Syötalasku1 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.uusiPeli = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.päävalikkoonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,7 +47,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(18, 94);
+            this.label1.Location = new System.Drawing.Point(18, 45);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(123, 30);
             this.label1.TabIndex = 0;
@@ -58,7 +57,7 @@
             // 
             this.Lasku.AutoSize = true;
             this.Lasku.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lasku.Location = new System.Drawing.Point(290, 186);
+            this.Lasku.Location = new System.Drawing.Point(376, 212);
             this.Lasku.Name = "Lasku";
             this.Lasku.Size = new System.Drawing.Size(63, 26);
             this.Lasku.TabIndex = 1;
@@ -66,7 +65,7 @@
             // 
             // Syötalasku1
             // 
-            this.Syötalasku1.Location = new System.Drawing.Point(386, 186);
+            this.Syötalasku1.Location = new System.Drawing.Point(473, 214);
             this.Syötalasku1.Name = "Syötalasku1";
             this.Syötalasku1.Size = new System.Drawing.Size(61, 26);
             this.Syötalasku1.TabIndex = 3;
@@ -76,32 +75,21 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(472, 184);
+            this.label3.Location = new System.Drawing.Point(939, 45);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(64, 26);
+            this.label3.Size = new System.Drawing.Size(66, 26);
             this.label3.TabIndex = 4;
-            this.label3.Text = "Tulos";
-            this.label3.Click += new System.EventHandler(this.UusiPeli_Click);
+            this.label3.Text = "0 / 10";
             // 
             // uusiPeli
             // 
-            this.uusiPeli.Location = new System.Drawing.Point(16, 148);
+            this.uusiPeli.Location = new System.Drawing.Point(381, 265);
             this.uusiPeli.Name = "uusiPeli";
             this.uusiPeli.Size = new System.Drawing.Size(177, 92);
             this.uusiPeli.TabIndex = 5;
             this.uusiPeli.Text = "Uusi peli\'";
             this.uusiPeli.UseVisualStyleBackColor = true;
             this.uusiPeli.Click += new System.EventHandler(this.uusiPeli_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(238, 94);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(665, 20);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "\"napauta lasku kohtaa saadaksesi lasku ja tulos kohtaa laskettuasi 10 kymmenen ky" +
-    "symystä\"";
             // 
             // menuStrip2
             // 
@@ -112,7 +100,7 @@
             this.menuToolStripMenuItem});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(1532, 33);
+            this.menuStrip2.Size = new System.Drawing.Size(1010, 33);
             this.menuStrip2.TabIndex = 7;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -143,7 +131,7 @@
             // 
             this.Ennätys.AutoSize = true;
             this.Ennätys.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Ennätys.Location = new System.Drawing.Point(18, 265);
+            this.Ennätys.Location = new System.Drawing.Point(18, 155);
             this.Ennätys.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Ennätys.Name = "Ennätys";
             this.Ennätys.Size = new System.Drawing.Size(97, 29);
@@ -152,7 +140,7 @@
             // 
             // ResetoiEnnätys
             // 
-            this.ResetoiEnnätys.Location = new System.Drawing.Point(23, 318);
+            this.ResetoiEnnätys.Location = new System.Drawing.Point(23, 193);
             this.ResetoiEnnätys.Name = "ResetoiEnnätys";
             this.ResetoiEnnätys.Size = new System.Drawing.Size(92, 68);
             this.ResetoiEnnätys.TabIndex = 9;
@@ -165,10 +153,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(1532, 1050);
+            this.ClientSize = new System.Drawing.Size(1010, 1050);
             this.Controls.Add(this.ResetoiEnnätys);
             this.Controls.Add(this.Ennätys);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.uusiPeli);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.Syötalasku1);
@@ -177,7 +164,7 @@
             this.Controls.Add(this.menuStrip2);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Pluslasku";
-            this.Text = "Form4";
+            this.Text = "Pluslasku";
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
             this.ResumeLayout(false);
@@ -192,7 +179,6 @@
         private System.Windows.Forms.TextBox Syötalasku1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button uusiPeli;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.MenuStrip menuStrip2;
         private System.Windows.Forms.ToolStripMenuItem menuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem päävalikkoonToolStripMenuItem;
