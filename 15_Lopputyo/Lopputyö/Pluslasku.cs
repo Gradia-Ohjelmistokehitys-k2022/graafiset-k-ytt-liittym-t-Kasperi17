@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Media;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Lopputyö
 {
@@ -23,22 +25,22 @@ namespace Lopputyö
             instance = this;
             uusiPeli.Click += new System.EventHandler(uusiPeli_Click);
             LataaParasTulos();
-
+            musiikki();
+            Lasku1();
 
         }
 
-
-        private void laskuClick_1(object sender, EventArgs e)
+        private void Lasku1()
         {
-
             if (kysymykset < 11)
             {
                 ensimmainenLuku = random.Next(1, 10);
                 toinenLuku = random.Next(1, 10);
-                vastaus = ensimmainenLuku + toinenLuku;
-                lasku.Text = ensimmainenLuku + " + " + toinenLuku + " = ";
-                syötalasku1.Text = "";
+                vastaus = ensimmainenLuku - toinenLuku;
+                Lasku.Text = ensimmainenLuku + " - " + toinenLuku + " = ";
+                Syötalasku1.Text = "";
                 kysymykset++;
+
             }
             if (kysymykset == 11)
             {
@@ -46,7 +48,30 @@ namespace Lopputyö
             }
 
         }
+        private void Vastaus_KeyDown(object sender, KeyEventArgs e)
+        {
 
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (kysymykset < 11)
+                {
+                    if (Syötalasku1.Text == vastaus.ToString())
+                    {
+                        MessageBox.Show("Oikein!");
+                        oikeinVastatut++;
+                        PelaajaSaavuttiUudenTuloksen(oikeinVastatut);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Väärin.");
+                    }
+                    Lasku1();
+                }
+            }
+
+
+
+        }
         public void PaivitaParasTulos(int uusiTulos)
         {
             if (uusiTulos > parasTulos)
@@ -63,9 +88,6 @@ namespace Lopputyö
         {
             PaivitaParasTulos(uusiTulos);
         }
-
-
-       
 
 
         private void TallennaParasTulos()
@@ -102,30 +124,7 @@ namespace Lopputyö
 
 
 
-        private void Vastaus_KeyDown(object sender, KeyEventArgs e)
-        {
-
-            if (e.KeyCode == Keys.Enter)
-            {
-                if (kysymykset < 11)
-                {
-                    if (syötalasku1.Text == vastaus.ToString())
-                    {
-                        MessageBox.Show("Oikein!");
-                        oikeinVastatut++;
-                        PelaajaSaavuttiUudenTuloksen(oikeinVastatut);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Väärin.");
-                    }
-                    laskuClick_1(sender, e);
-                }
-            }
-
-
-
-        }
+       
 
         private void UusiPeli_Click(object sender, EventArgs e)
         {
@@ -137,16 +136,10 @@ namespace Lopputyö
             kysymykset = 0;
             oikeinVastatut = 0;
             label3.Text = "tulos";
-            lasku.Text = "lasku";
+            Lasku.Text = "lasku";
         }
 
-        private void päävalikkoonToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            Menu form1 = new Menu();
-            form1.Show();
-            musa.Stop();
-        }
+        
 
         private void tallennaToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -179,12 +172,18 @@ namespace Lopputyö
             TallennaParasTulos();
         }
 
+        
+        private void päävalikkoonToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Menu form1 = new Menu();
+            form1.Show();
+            
+        }
         private void musiikki()
         {
             SoundPlayer musa = new SoundPlayer(Lopputyö.Properties.Resources.for_elevator_jazz_music_124005);
             musa.Play();
         }
-
-        
     }
 }

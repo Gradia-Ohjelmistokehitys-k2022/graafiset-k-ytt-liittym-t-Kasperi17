@@ -1,0 +1,189 @@
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Media;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
+namespace Lopputyö
+{
+    public partial class Pluslasku : Form
+    {
+        public static Pluslasku instance;
+        private Random random = new Random();
+        private SoundPlayer musa;
+        private int kysymykset;
+        private int ensimmainenLuku;
+        private int toinenLuku;
+        private int vastaus;
+        int oikeinVastatut = 0;
+        private int parasTulos = 0;
+        public Pluslasku()
+        {
+            InitializeComponent();
+            instance = this;
+            uusiPeli.Click += new System.EventHandler(uusiPeli_Click);
+            LataaParasTulos();
+            musiikki();
+            Lasku1();
+
+        }
+
+        private void Lasku1()
+        {
+            if (kysymykset < 11)
+            {
+                ensimmainenLuku = random.Next(1, 10);
+                toinenLuku = random.Next(1, 10);
+                vastaus = ensimmainenLuku - toinenLuku;
+                Lasku.Text = ensimmainenLuku + " - " + toinenLuku + " = ";
+                Syötalasku1.Text = "";
+                kysymykset++;
+
+            }
+            if (kysymykset == 11)
+            {
+                MessageBox.Show("Olet ratkaissut 10 kysymystä");
+            }
+
+        }
+        private void Vastaus_KeyDown(object sender, KeyEventArgs e)
+        {
+
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (kysymykset < 11)
+                {
+                    if (Syötalasku1.Text == vastaus.ToString())
+                    {
+                        MessageBox.Show("Oikein!");
+                        oikeinVastatut++;
+                        PelaajaSaavuttiUudenTuloksen(oikeinVastatut);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Väärin.");
+                    }
+                    Lasku1();
+                }
+            }
+
+
+
+        }
+        public void PaivitaParasTulos(int uusiTulos)
+        {
+            if (uusiTulos > parasTulos)
+            {
+                parasTulos = uusiTulos;
+                Ennätys.Text = "Paras tulos: " + parasTulos;
+                TallennaParasTulos();
+            }
+        }
+
+
+
+        private void PelaajaSaavuttiUudenTuloksen(int uusiTulos)
+        {
+            PaivitaParasTulos(uusiTulos);
+        }
+
+
+        private void TallennaParasTulos()
+        {
+            try
+            {
+                File.WriteAllText("parastulos3.txt", parasTulos.ToString());
+            }
+            catch (IOException ex)
+            {
+                MessageBox.Show("Virhe tallennettaessa tulosta: " + ex.Message, "Virhe", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void LataaParasTulos()
+        {
+            if (File.Exists("parastulos3.txt"))
+            {
+                try
+                {
+                    string tallennettuTulos = File.ReadAllText("parastulos3.txt");
+                    if (int.TryParse(tallennettuTulos, out int tulos))
+                    {
+                        parasTulos = tulos;
+                        Ennätys.Text = "Ennätys tulos: " + parasTulos;
+                    }
+                }
+                catch (IOException ex)
+                {
+                    MessageBox.Show("Virhe ladattaessa tulosta: " + ex.Message, "Virhe", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+
+
+
+       
+
+        private void UusiPeli_Click(object sender, EventArgs e)
+        {
+            label3.Text = "Oikein vastattu: " + oikeinVastatut + " / 10";
+        }
+
+        private void uusiPeli_Click(object sender, EventArgs e)
+        {
+            kysymykset = 0;
+            oikeinVastatut = 0;
+            label3.Text = "tulos";
+            Lasku.Text = "lasku";
+        }
+
+        
+
+        private void tallennaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog tallenna = new SaveFileDialog();
+            tallenna.Filter = "Tekstitiedostot|*.txt|Kaikki tiedostot|*.*";
+
+            if (tallenna.ShowDialog() == DialogResult.OK)
+            {
+                string tiedostoNimi = tallenna.FileName;
+                string sisältö = label3.Text;
+
+                try
+                {
+                    File.WriteAllText(tiedostoNimi, sisältö);
+                    MessageBox.Show("Tiedosto tallennettu onnistuneesti.", "Tallennus onnistui", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Virhe tallennettaessa tiedostoa: " + ex.Message, "Virhe", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
+
+        }
+
+        private void ResetoiEnnätys_Click(object sender, EventArgs e)
+        {
+            parasTulos = 0;
+            Ennätys.Text = "Paras tulos: " + parasTulos;
+            TallennaParasTulos();
+        }
+
+        
+        private void päävalikkoonToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Menu form1 = new Menu();
+            form1.Show();
+            
+        }
+        private void musiikki()
+        {
+            SoundPlayer musa = new SoundPlayer(Lopputyö.Properties.Resources.for_elevator_jazz_music_124005);
+            musa.Play();
+        }
+    }
+}

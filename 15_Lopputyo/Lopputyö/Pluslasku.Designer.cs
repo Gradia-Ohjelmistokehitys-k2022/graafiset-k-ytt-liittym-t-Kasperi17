@@ -30,8 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Pluslasku));
             this.label1 = new System.Windows.Forms.Label();
-            this.lasku = new System.Windows.Forms.Label();
-            this.syötalasku1 = new System.Windows.Forms.TextBox();
+            this.Lasku = new System.Windows.Forms.Label();
+            this.Syötalasku1 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.uusiPeli = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -54,24 +54,23 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Pluslasku";
             // 
-            // lasku
+            // Lasku
             // 
-            this.lasku.AutoSize = true;
-            this.lasku.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lasku.Location = new System.Drawing.Point(291, 186);
-            this.lasku.Name = "lasku";
-            this.lasku.Size = new System.Drawing.Size(63, 26);
-            this.lasku.TabIndex = 1;
-            this.lasku.Text = "lasku";
-            this.lasku.Click += new System.EventHandler(this.laskuClick_1);
+            this.Lasku.AutoSize = true;
+            this.Lasku.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lasku.Location = new System.Drawing.Point(290, 186);
+            this.Lasku.Name = "Lasku";
+            this.Lasku.Size = new System.Drawing.Size(63, 26);
+            this.Lasku.TabIndex = 1;
+            this.Lasku.Text = "lasku";
             // 
-            // syötalasku1
+            // Syötalasku1
             // 
-            this.syötalasku1.Location = new System.Drawing.Point(386, 186);
-            this.syötalasku1.Name = "syötalasku1";
-            this.syötalasku1.Size = new System.Drawing.Size(61, 26);
-            this.syötalasku1.TabIndex = 3;
-            this.syötalasku1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Vastaus_KeyDown);
+            this.Syötalasku1.Location = new System.Drawing.Point(386, 186);
+            this.Syötalasku1.Name = "Syötalasku1";
+            this.Syötalasku1.Size = new System.Drawing.Size(61, 26);
+            this.Syötalasku1.TabIndex = 3;
+            this.Syötalasku1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Vastaus_KeyDown);
             // 
             // label3
             // 
@@ -150,7 +149,6 @@
             this.Ennätys.Size = new System.Drawing.Size(97, 29);
             this.Ennätys.TabIndex = 8;
             this.Ennätys.Text = "Ennätys";
-            
             // 
             // ResetoiEnnätys
             // 
@@ -173,8 +171,8 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.uusiPeli);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.syötalasku1);
-            this.Controls.Add(this.lasku);
+            this.Controls.Add(this.Syötalasku1);
+            this.Controls.Add(this.Lasku);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip2);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -190,8 +188,8 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lasku;
-        private System.Windows.Forms.TextBox syötalasku1;
+        private System.Windows.Forms.Label Lasku;
+        private System.Windows.Forms.TextBox Syötalasku1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button uusiPeli;
         private System.Windows.Forms.Label label4;

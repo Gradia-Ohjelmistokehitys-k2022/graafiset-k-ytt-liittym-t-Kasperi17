@@ -29,9 +29,13 @@ namespace Lopputyö
             instance = this;
             button1.Click += new System.EventHandler(UusiPeli_Click);
             LataaParasTulos();
-
+            lasku1();
+            musiikki();
+            
         }
         
+        
+
 
         private void PelaajaSaavuttiUudenTuloksen(int uusiTulos)
         {
@@ -83,9 +87,11 @@ namespace Lopputyö
 
 
 
-        private void lasku_Click(object sender, EventArgs e)
-        {
+        
 
+        
+        private void lasku1()
+        {
             if (kysymykset < 11)
             {
                 ensimmainenLuku = random.Next(1, 10);
@@ -94,20 +100,19 @@ namespace Lopputyö
                 Lasku.Text = ensimmainenLuku + " - " + toinenLuku + " = ";
                 textBox1.Text = "";
                 kysymykset++;
+                
             }
             if (kysymykset == 11)
             {
                 MessageBox.Show("Olet ratkaissut 10 kysymystä");
             }
 
-
         }
 
-
-
+       
 
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
-        {
+        {   
 
             if (e.KeyCode == Keys.Enter)
             {
@@ -123,13 +128,18 @@ namespace Lopputyö
                     {
                         MessageBox.Show("Väärin.");
                     }
-                    lasku_Click(sender, e);
+                    lasku1();
                 }
             }
 
 
         }
-
+        private void ResetoiEnnätys_Click(object sender, EventArgs e)
+        {
+            parasTulos = 0;
+            label5.Text = "Paras tulos: " + parasTulos;
+            TallennaParasTulos();
+        }
         private void Tulos_Click(object sender, EventArgs e)
         {
             Tulos.Text = "Oikein vastattu: " + oikeinVastatut + " / 10";
@@ -142,13 +152,7 @@ namespace Lopputyö
 
         }
 
-        private void takaisinPäävalikkoonToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            Menu form1 = new Menu();
-            form1.Show();
-            musa.Stop();
-        }
+        
 
         private void tallennaToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -172,16 +176,17 @@ namespace Lopputyö
             }
         }
 
-        private void ResetoiEnnätys_Click(object sender, EventArgs e)
+        private void takaisinPäävalikkoonToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            parasTulos = 0;
-            label5.Text = "Paras tulos: " + parasTulos;
-            TallennaParasTulos();
+            this.Close();
+            Menu form1 = new Menu();
+            form1.Show();
+            
         }
         private void musiikki()
         {
             SoundPlayer musa = new SoundPlayer(Lopputyö.Properties.Resources.for_elevator_jazz_music_124005);
             musa.Play();
-        }
+        }       
     }
 }

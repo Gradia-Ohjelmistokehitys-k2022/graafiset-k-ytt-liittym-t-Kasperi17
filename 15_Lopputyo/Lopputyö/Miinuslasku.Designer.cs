@@ -73,7 +73,7 @@
             this.Lasku.Size = new System.Drawing.Size(63, 26);
             this.Lasku.TabIndex = 2;
             this.Lasku.Text = "lasku";
-            this.Lasku.Click += new System.EventHandler(this.lasku_Click);
+            
             // 
             // Tulos
             // 

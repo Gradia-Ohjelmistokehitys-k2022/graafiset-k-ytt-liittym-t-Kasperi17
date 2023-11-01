@@ -22,7 +22,7 @@ namespace Lopputyö
             musiikki();
             InitializeComponent();
             instance = this;
-            musa = new SoundPlayer(Lopputyö.Properties.Resources.Ketsa___Firstly);
+            
 
         }
         public void musiikki()
@@ -39,7 +39,7 @@ namespace Lopputyö
             Miinuslasku form = new Miinuslasku();
             this.Hide();
             form.Show();
-            musa.Stop();
+            
 
         }
 
