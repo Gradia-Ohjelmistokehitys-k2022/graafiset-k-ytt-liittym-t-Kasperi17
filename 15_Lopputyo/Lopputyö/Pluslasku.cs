@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Media;
 using System.Threading.Tasks;
@@ -19,6 +20,8 @@ namespace Lopputyö
         private int vastaus;
         int oikeinVastatut = 0;
         private int parasTulos = 0;
+        private string kayttajaNimi;
+
         public Pluslasku()
         {
             InitializeComponent();
@@ -27,8 +30,10 @@ namespace Lopputyö
             LataaParasTulos();
             musiikki();
             Lasku1();
+            string kayttajaNimi = Environment.UserName;
 
         }
+
 
         private void Lasku1()
         {
@@ -78,8 +83,8 @@ namespace Lopputyö
         {
             kysymykset = 0;
             oikeinVastatut = 0;
-            label3.Text = "tulos";
-            Lasku.Text = "lasku";
+            Lasku1();
+            Tulos1();
         }
 
         private void ResetoiEnnätys_Click(object sender, EventArgs e)
@@ -87,7 +92,8 @@ namespace Lopputyö
             parasTulos = 0;
             Ennätys.Text = "Paras tulos: " + parasTulos;
             TallennaParasTulos();
-        }public void PaivitaParasTulos(int uusiTulos)
+        }
+        public void PaivitaParasTulos(int uusiTulos)
         {
             if (uusiTulos > parasTulos)
             {
@@ -107,32 +113,30 @@ namespace Lopputyö
         {
             try
             {
-                File.WriteAllText("parastulos3.txt", parasTulos.ToString());
+                File.WriteAllText(kayttajaNimi + "parastulos3.txt", parasTulos.ToString());
             }
-            catch (IOException ex)
-            {
-                MessageBox.Show("Virhe tallennettaessa tulosta: " + ex.Message, "Virhe", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            catch (IOException) { MessageBox.Show("Virhe tallennettaessa tulosta: "); }
         }
         private void LataaParasTulos()
         {
-            if (File.Exists("parastulos3.txt"))
+            if (File.Exists(kayttajaNimi + "parastulos3.txt"))
             {
                 try
                 {
-                    string tallennettuTulos = File.ReadAllText("parastulos3.txt");
+                    string tallennettuTulos = File.ReadAllText(kayttajaNimi + "parastulos3.txt");
                     if (int.TryParse(tallennettuTulos, out int tulos))
                     {
                         parasTulos = tulos;
                         Ennätys.Text = "Ennätys tulos: " + parasTulos;
                     }
                 }
-                catch (IOException ex)
+                catch (IOException)
                 {
-                    MessageBox.Show("Virhe ladattaessa tulosta: " + ex.Message, "Virhe", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Virhe ladattaessa tulosta: ");
                 }
             }
         }
+       
         private void tallennaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SaveFileDialog tallenna = new SaveFileDialog();
@@ -146,11 +150,11 @@ namespace Lopputyö
                 try
                 {
                     File.WriteAllText(tiedostoNimi, sisältö);
-                    MessageBox.Show("Tiedosto tallennettu onnistuneesti.", "Tallennus onnistui", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Tiedosto tallennettu onnistuneesti.");
                 }
-                catch (Exception ex)
+                catch (Exception )
                 {
-                    MessageBox.Show("Virhe tallennettaessa tiedostoa: " + ex.Message, "Virhe", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Virhe tallennettaessa tiedostoa: ");
                 }
 
             }

@@ -87,7 +87,7 @@ namespace Lopputyö
                 label5.Text = "Paras tulos: " + parasTulos;
                 TallennaParasTulos();
             }
-        }
+         }
         private void PelaajaSaavuttiUudenTuloksen(int uusiTulos)
         {
             PaivitaParasTulos(uusiTulos);
@@ -158,8 +158,8 @@ namespace Lopputyö
         {
             kysymykset = 0;
             oikeinVastatut = 0;
-            Tulos.Text = "tulos";
-            Lasku.Text = "lasku";
+            lasku1();
+            Tulos1();
         }
         private void Musiikki()
         {

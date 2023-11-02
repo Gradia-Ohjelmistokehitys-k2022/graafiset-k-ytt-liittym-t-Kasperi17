@@ -64,6 +64,7 @@
     <Compile Include="Kertolasku.Designer.cs">
       <DependentUpon>Kertolasku.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pelaaja.cs" />
     <Compile Include="Pluslasku.cs">
       <SubType>Form</SubType>
     </Compile>

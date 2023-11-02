@@ -155,9 +155,8 @@ namespace Lopputyö
         {
             kysymykset = 0; 
             oikeinVastatut = 0;
-            Tulos.Text = "tulos";
-            Lasku.Text = "lasku";
-
+            lasku1();
+            tulos();
         }
 
         

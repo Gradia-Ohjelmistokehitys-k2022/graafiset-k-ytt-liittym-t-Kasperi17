@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Media;
+using System.IO;
+
 namespace Lopputyö
 {
     public partial class Menu : Form
@@ -16,16 +18,22 @@ namespace Lopputyö
         public static Menu instance;
         private SoundPlayer musa;
         private SoundPlayer musa2;
+        private List<Pelaaja> pelaajat = new List<Pelaaja>();
+        private string pelaajanNimi;
+
         public Menu()
         {
             musiikki();
             InitializeComponent();
             instance = this;
-            
-
         }
+
         
-       
+
+        
+        
+
+
 
         private void miinusbutton1_Click(object sender, EventArgs e)
         {
@@ -54,10 +62,10 @@ namespace Lopputyö
         private void Form1_Load(object sender, EventArgs e)
         {
             
-            string loggedInUser = Environment.UserName;
+            string kayttajaNimi = Environment.UserName;
 
 
-            label2.Text = "Kirjautunut käyttäjä:\n" + loggedInUser;
+            label2.Text = "Kirjautunut käyttäjä:\n" + kayttajaNimi;
         }
 
         private void tallennaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -85,5 +93,26 @@ namespace Lopputyö
 
         }
 
+        private void Vahvista_Click(object sender, EventArgs e)
+        {
+            string nimi = textBox1.Text;
+            KirjauduSisaan(nimi);
+        }
+        private void KirjauduSisaan(string nimi)
+        {
+
+            if (pelaajat == null)
+            {
+                
+                Pelaaja pelaaja = new Pelaaja(nimi);
+                pelaajat.Add(pelaaja);
+            }
+            for (int i = 0; i < pelaajat.Count; i++)
+            {
+                
+            }
+            
+
+        }
     }
 }

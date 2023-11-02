@@ -40,6 +40,8 @@
             this.musiikka2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.Vahvista = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -150,12 +152,29 @@
             this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.label2.Font = new System.Drawing.Font("Microsoft YaHei UI", 23F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.label2.Location = new System.Drawing.Point(13, 47);
+            this.label2.Location = new System.Drawing.Point(21, 643);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(166, 60);
             this.label2.TabIndex = 5;
             this.label2.Text = "label2";
+            // 
+            // Vahvista
+            // 
+            this.Vahvista.Location = new System.Drawing.Point(52, 171);
+            this.Vahvista.Name = "Vahvista";
+            this.Vahvista.Size = new System.Drawing.Size(100, 43);
+            this.Vahvista.TabIndex = 6;
+            this.Vahvista.Text = "button1";
+            this.Vahvista.UseVisualStyleBackColor = true;
+            this.Vahvista.Click += new System.EventHandler(this.Vahvista_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(52, 120);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 26);
+            this.textBox1.TabIndex = 7;
             // 
             // Menu
             // 
@@ -163,6 +182,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1009, 1050);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.Vahvista);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
@@ -193,6 +214,8 @@
         private System.Windows.Forms.ToolStripMenuItem musiikkiToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem musiikki1ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem musiikka2ToolStripMenuItem;
+        private System.Windows.Forms.Button Vahvista;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 
