@@ -21,7 +21,7 @@ namespace Lopputyö
         int oikeinVastatut = 0;
         private int parasTulos = 0;
         private string kayttajaNimi;
-
+        
         public Pluslasku()
         {
             InitializeComponent();
@@ -113,7 +113,7 @@ namespace Lopputyö
         {
             try
             {
-                File.WriteAllText(kayttajaNimi + "parastulos3.txt", parasTulos.ToString());
+                File.WriteAllText("parastulos3.txt", parasTulos.ToString());
             }
             catch (IOException) { MessageBox.Show("Virhe tallennettaessa tulosta: "); }
         }
@@ -123,7 +123,7 @@ namespace Lopputyö
             {
                 try
                 {
-                    string tallennettuTulos = File.ReadAllText(kayttajaNimi + "parastulos3.txt");
+                    string tallennettuTulos = File.ReadAllText("parastulos3.txt");
                     if (int.TryParse(tallennettuTulos, out int tulos))
                     {
                         parasTulos = tulos;
@@ -160,6 +160,11 @@ namespace Lopputyö
             }
 
         }
+
+
+
+
+
         private void päävalikkoonToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -171,7 +176,10 @@ namespace Lopputyö
         private void musiikki()
         {
             SoundPlayer musa = new SoundPlayer(Lopputyö.Properties.Resources.for_elevator_jazz_music_124005);
-            musa.Play();
+            //musa.Play();
         }
+
+
+        
     }
 }

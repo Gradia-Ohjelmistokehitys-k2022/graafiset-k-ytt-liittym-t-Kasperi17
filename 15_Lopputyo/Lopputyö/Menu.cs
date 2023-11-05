@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Media;
 using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Lopputyö
 {
@@ -63,7 +64,7 @@ namespace Lopputyö
         {
             
             string kayttajaNimi = Environment.UserName;
-
+            LataaKayttajat();
 
             label2.Text = "Kirjautunut käyttäjä:\n" + kayttajaNimi;
         }
@@ -71,6 +72,8 @@ namespace Lopputyö
         private void tallennaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             System.Windows.Forms.Application.ExitThread();
+            TallennaKayttajat();
+            
         }
 
         private void musiikki1ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -82,14 +85,14 @@ namespace Lopputyö
 
         private void musiikka2ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            musa.Stop();
+            
             SoundPlayer musa2 = new SoundPlayer(Lopputyö.Properties.Resources.in_the_cafe_with_coffee_after_lunch_140_173156);
             musa2.Play();
         }
         public void musiikki()
         {
             SoundPlayer musa = new SoundPlayer(Lopputyö.Properties.Resources.Ketsa___Firstly);
-            musa.Play();
+            //musa.Play();
 
         }
 
@@ -100,19 +103,90 @@ namespace Lopputyö
         }
         private void KirjauduSisaan(string nimi)
         {
+            
+            bool kayttaja = false;
 
             if (pelaajat == null)
             {
-                
                 Pelaaja pelaaja = new Pelaaja(nimi);
                 pelaajat.Add(pelaaja);
             }
-            for (int i = 0; i < pelaajat.Count; i++)
+
+            foreach (Pelaaja pelaaja in pelaajat)
             {
-                
+                if (pelaaja.Nimi == nimi)
+                {
+                    kayttaja = true;
+                    break;
+                }
             }
-            
+
+            if (kayttaja)
+            {
+                MessageBox.Show("Kirjautuminen onnistui!");
+            }
+            else
+            {
+                Pelaaja uusiPelaaja = new Pelaaja(nimi);
+                pelaajat.Add(uusiPelaaja);
+                MessageBox.Show("Uusi käyttäjä lisätty!");
+            }
 
         }
+
+
+        public void TallennaKayttajat()
+        {
+            // Luo tiedosto, johon tallennat käyttäjätiedot
+            string tiedostoNimi = "kayttajat.txt";
+
+            // Käy läpi kaikki pelaajat ja tallenna heidän tiedot tiedostoon
+            using (StreamWriter tiedosto = new StreamWriter(tiedostoNimi))
+            {
+                foreach (Pelaaja pelaaja in pelaajat)
+                {
+                    tiedosto.WriteLine(pelaaja.Nimi);
+                    // Lisää muut tiedot tarpeen mukaan
+                }
+            }
+        }
+        public void LataaKayttajat()
+        {
+            string tiedostoNimi = "kayttajat.txt";
+
+            if (File.Exists(tiedostoNimi))
+            {
+                // Avaa tiedosto ja lue tiedot
+                using (StreamReader tiedosto = new StreamReader(tiedostoNimi))
+                {
+                    string rivi;
+                    while ((rivi = tiedosto.ReadLine()) != null)
+                    {
+                        // Luo pelaajaolio ja lisää tiedot
+                        Pelaaja pelaaja = new Pelaaja(rivi);
+                        pelaaja.Nimi = rivi;
+                        // Lisää muut tiedot tarpeen mukaan
+                        pelaajat.Add(pelaaja);
+                    }
+                }
+            }
+            else
+            {
+                // Jos tiedostoa ei ole, luo uusi tyhjä lista
+                pelaajat = new List<Pelaaja>();
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }

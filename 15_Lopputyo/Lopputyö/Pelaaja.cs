@@ -8,16 +8,20 @@ using System.Threading.Tasks;
 
 namespace Lopputyö
 {
+    [Serializable]
     internal class Pelaaja
     {
+       
         public string Nimi { get; set; }
-        public int Pisteet { get; set; }
-
+        
+        
         public Pelaaja(string nimi)
         {
             Nimi = nimi;
-            Pisteet = 0; 
+            
+            
         }
 
+       
     }
 }
