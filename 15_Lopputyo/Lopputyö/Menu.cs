@@ -105,7 +105,7 @@ namespace Lopputyö
         {
             
             bool kayttaja = false;
-
+            
             if (pelaajat == null)
             {
                 Pelaaja pelaaja = new Pelaaja(nimi);
@@ -137,16 +137,16 @@ namespace Lopputyö
 
         public void TallennaKayttajat()
         {
-            // Luo tiedosto, johon tallennat käyttäjätiedot
+            
             string tiedostoNimi = "kayttajat.txt";
 
-            // Käy läpi kaikki pelaajat ja tallenna heidän tiedot tiedostoon
+            
             using (StreamWriter tiedosto = new StreamWriter(tiedostoNimi))
             {
                 foreach (Pelaaja pelaaja in pelaajat)
                 {
                     tiedosto.WriteLine(pelaaja.Nimi);
-                    // Lisää muut tiedot tarpeen mukaan
+                    
                 }
             }
         }
@@ -156,23 +156,20 @@ namespace Lopputyö
 
             if (File.Exists(tiedostoNimi))
             {
-                // Avaa tiedosto ja lue tiedot
+                
                 using (StreamReader tiedosto = new StreamReader(tiedostoNimi))
                 {
                     string rivi;
                     while ((rivi = tiedosto.ReadLine()) != null)
                     {
-                        // Luo pelaajaolio ja lisää tiedot
                         Pelaaja pelaaja = new Pelaaja(rivi);
                         pelaaja.Nimi = rivi;
-                        // Lisää muut tiedot tarpeen mukaan
                         pelaajat.Add(pelaaja);
                     }
                 }
             }
             else
             {
-                // Jos tiedostoa ei ole, luo uusi tyhjä lista
                 pelaajat = new List<Pelaaja>();
             }
         }
