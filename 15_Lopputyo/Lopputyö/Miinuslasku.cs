@@ -11,7 +11,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Lopputyö
-{       
+{   
+    
     public partial class Miinuslasku : Form
     {
         private Random random = new Random();
@@ -44,24 +45,13 @@ namespace Lopputyö
                 parasTulos = uusiTulos;
                 label5.Text = "Paras tulos: " + parasTulos;
 
-                TallennaParasTulos();
+                Hyöty.TallennaParasTulos(parasTulos, "parhaat miinuslaskut.txt");
                 //Tarkistetaan saiko käyttäjä uuden tuloksen.
             }
 
         }
 
-        private void TallennaParasTulos()
-        {
-            try
-            {
-                File.WriteAllText("parastulos.txt", parasTulos.ToString());
-            }
-            catch (IOException ex)
-            {
-                MessageBox.Show("Virhe tallennettaessa tulosta: " + ex.Message, "Virhe", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            //tallenetaan paras tulos teksti tiedostoon.
-        }
+   
 
         private void LataaParasTulos()
         {
@@ -130,7 +120,7 @@ namespace Lopputyö
         {
             parasTulos = 0;
             label5.Text = "Paras tulos: " + parasTulos;
-            TallennaParasTulos();
+            Hyöty.TallennaParasTulos(parasTulos, "parhaat pluslasku tulokset.txt");
             //Resetoidaan ennätys.
         }
         
@@ -151,6 +141,10 @@ namespace Lopputyö
             form1.Show();
             
         }
-          
+
+        private void Lasku_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

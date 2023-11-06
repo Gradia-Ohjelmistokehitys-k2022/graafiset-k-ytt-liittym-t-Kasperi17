@@ -22,13 +22,15 @@ namespace Lopputyö
         int oikeinVastatut = 0;
         private int parasTulos = 0;
         private Random random = new Random();
+        private string parhaatlaskut = "";
+        
        
         public Kertolasku()
         {
             InitializeComponent();
             instance = this;
             button1.Click += new System.EventHandler(UusiPeli_Click);
-            LataaParasTulos();
+            parasTulos = Hyöty.LataaParasTulos("parhaat kertolaskut.txt");
             lasku1();
         }
         
@@ -58,7 +60,7 @@ namespace Lopputyö
             {
                 parasTulos = uusiTulos;
                 label5.Text = "Paras tulos: " + parasTulos;
-                TallennaParasTulos();
+                Hyöty.TallennaParasTulos(parasTulos, "parhaat kertolaskut.txt");
                 //Tarkistetaan saiko pelaaja uuden tuloksen ja jos sai niin tallennetaan se.
             }
          }
@@ -88,17 +90,8 @@ namespace Lopputyö
         }
 
 
-        private void TallennaParasTulos()
-        {
-            try
-            {
-                File.WriteAllText("parastulos1.txt", parasTulos.ToString());
-            }
-            catch (IOException)
-            {
-                MessageBox.Show("Virhe tallennettaessa tulosta: ");
-            }
-        }
+        
+        
 
         private void Vastaus_KeyDown(object sender, KeyEventArgs e)
         {
@@ -132,7 +125,7 @@ namespace Lopputyö
         {
             parasTulos = 0;
             label5.Text = "Paras tulos: " + parasTulos;
-            TallennaParasTulos();
+            Hyöty.TallennaParasTulos(parasTulos, "parhaat pluslasku tulokset.txt");
         }
 
         private void UusiPeli_Click(object sender, EventArgs e)
@@ -150,6 +143,9 @@ namespace Lopputyö
             
         }
 
-        
+        private void Lasku_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

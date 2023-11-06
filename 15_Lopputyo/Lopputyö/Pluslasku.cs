@@ -7,8 +7,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
+
 namespace Lopputyö
 {
+    
+    
     public partial class Pluslasku : Form
     {
         public static Pluslasku instance;
@@ -92,7 +95,7 @@ namespace Lopputyö
         {
             parasTulos = 0;
             Ennätys.Text = "Paras tulos: " + parasTulos;
-            TallennaParasTulos();
+            Hyöty.TallennaParasTulos(parasTulos, "parhaat pluslasku tulokset.txt");
         }
         public void PaivitaParasTulos(int uusiTulos)
         {
@@ -100,8 +103,9 @@ namespace Lopputyö
             {
                 parasTulos = uusiTulos;
                 Ennätys.Text = "Paras tulos: " + parasTulos;
-                TallennaParasTulos();
+                //TallennaParasTulos();
                 //Tarkistetaan saiko käyttä paremman tuloksen kuin viimeksi.
+                Hyöty.TallennaParasTulos(parasTulos, "parhaat pluslasku tulokset.txt");
             }
         }
 
@@ -111,14 +115,7 @@ namespace Lopputyö
         }
 
 
-        private void TallennaParasTulos()
-        {
-            try
-            {
-                File.WriteAllText("parastulos3.txt", parasTulos.ToString());
-            }
-            catch (IOException) { MessageBox.Show("Virhe tallennettaessa tulosta: "); }
-        }
+        
         private void LataaParasTulos()
         {
             if (File.Exists(kayttajaNimi + "parastulos3.txt"))
@@ -154,7 +151,18 @@ namespace Lopputyö
             //musa.Play();
         }
 
+        private void Lasku_Click(object sender, EventArgs e)
+        {
+
+        }
 
         
     }
+    
+
+
+
 }
+    
+
+

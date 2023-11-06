@@ -64,12 +64,12 @@
             this.Lasku.Size = new System.Drawing.Size(43, 18);
             this.Lasku.TabIndex = 1;
             this.Lasku.Text = "lasku";
-            
+            this.Lasku.Click += new System.EventHandler(this.Lasku_Click);
             // 
             // Syötalasku1
             // 
             this.Syötalasku1.Location = new System.Drawing.Point(315, 139);
-            this.Syötalasku1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Syötalasku1.Margin = new System.Windows.Forms.Padding(2);
             this.Syötalasku1.Name = "Syötalasku1";
             this.Syötalasku1.Size = new System.Drawing.Size(42, 20);
             this.Syötalasku1.TabIndex = 3;
@@ -89,7 +89,7 @@
             // uusiPeli
             // 
             this.uusiPeli.Location = new System.Drawing.Point(254, 172);
-            this.uusiPeli.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.uusiPeli.Margin = new System.Windows.Forms.Padding(2);
             this.uusiPeli.Name = "uusiPeli";
             this.uusiPeli.Size = new System.Drawing.Size(118, 60);
             this.uusiPeli.TabIndex = 5;
@@ -131,7 +131,6 @@
             this.tallennaToolStripMenuItem.Name = "tallennaToolStripMenuItem";
             this.tallennaToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.tallennaToolStripMenuItem.Text = "Tallenna";
-            
             // 
             // Ennätys
             // 
@@ -146,7 +145,7 @@
             // ResetoiEnnätys
             // 
             this.ResetoiEnnätys.Location = new System.Drawing.Point(15, 125);
-            this.ResetoiEnnätys.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ResetoiEnnätys.Margin = new System.Windows.Forms.Padding(2);
             this.ResetoiEnnätys.Name = "ResetoiEnnätys";
             this.ResetoiEnnätys.Size = new System.Drawing.Size(61, 44);
             this.ResetoiEnnätys.TabIndex = 9;
@@ -158,7 +157,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(673, 682);
             this.Controls.Add(this.ResetoiEnnätys);
             this.Controls.Add(this.Ennätys);

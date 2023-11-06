@@ -34,7 +34,7 @@ namespace Lopputyö
             Miinuslasku form = new Miinuslasku();
             this.Hide();
             form.Show();
-            musa.Stop();
+            
         }
 
         private void kertobutton2_Click(object sender, EventArgs e)
