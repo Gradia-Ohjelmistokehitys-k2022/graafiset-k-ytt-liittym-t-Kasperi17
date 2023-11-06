@@ -20,21 +20,13 @@ namespace Lopputyö
         private SoundPlayer musa;
         private SoundPlayer musa2;
         private List<Pelaaja> pelaajat = new List<Pelaaja>();
-        private string pelaajanNimi;
 
         public Menu()
         {
-            musiikki();
+            
             InitializeComponent();
             instance = this;
         }
-
-        
-
-        
-        
-
-
 
         private void miinusbutton1_Click(object sender, EventArgs e)
         {
@@ -42,8 +34,7 @@ namespace Lopputyö
             Miinuslasku form = new Miinuslasku();
             this.Hide();
             form.Show();
-            
-
+            musa.Stop();
         }
 
         private void kertobutton2_Click(object sender, EventArgs e)
@@ -64,7 +55,7 @@ namespace Lopputyö
         {
             
             string kayttajaNimi = Environment.UserName;
-            LataaKayttajat();
+            TarkistaKayttajat();
 
             label2.Text = "Kirjautunut käyttäjä:\n" + kayttajaNimi;
         }
@@ -80,7 +71,7 @@ namespace Lopputyö
         {
             SoundPlayer musa = new SoundPlayer(Lopputyö.Properties.Resources.Ketsa___Firstly);
             musa.Play();
-            musa2.Stop();
+            
         }
 
         private void musiikka2ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -88,13 +79,9 @@ namespace Lopputyö
             
             SoundPlayer musa2 = new SoundPlayer(Lopputyö.Properties.Resources.in_the_cafe_with_coffee_after_lunch_140_173156);
             musa2.Play();
+           
         }
-        public void musiikki()
-        {
-            SoundPlayer musa = new SoundPlayer(Lopputyö.Properties.Resources.Ketsa___Firstly);
-            //musa.Play();
-
-        }
+       
 
         private void Vahvista_Click(object sender, EventArgs e)
         {
@@ -106,11 +93,7 @@ namespace Lopputyö
             
             bool kayttaja = false;
             
-            if (pelaajat == null)
-            {
-                Pelaaja pelaaja = new Pelaaja(nimi);
-                pelaajat.Add(pelaaja);
-            }
+            
 
             foreach (Pelaaja pelaaja in pelaajat)
             {
@@ -119,6 +102,7 @@ namespace Lopputyö
                     kayttaja = true;
                     break;
                 }
+                //Tarkistetaan onko syötetty käyttäjä olemassa.
             }
 
             if (kayttaja)
@@ -130,6 +114,7 @@ namespace Lopputyö
                 Pelaaja uusiPelaaja = new Pelaaja(nimi);
                 pelaajat.Add(uusiPelaaja);
                 MessageBox.Show("Uusi käyttäjä lisätty!");
+                // Lisätään uusi käyttäjä jos ei ollut olemassa.
             }
 
         }
@@ -150,7 +135,7 @@ namespace Lopputyö
                 }
             }
         }
-        public void LataaKayttajat()
+        public void TarkistaKayttajat()
         {
             string tiedostoNimi = "kayttajat.txt";
 
@@ -173,17 +158,5 @@ namespace Lopputyö
                 pelaajat = new List<Pelaaja>();
             }
         }
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }

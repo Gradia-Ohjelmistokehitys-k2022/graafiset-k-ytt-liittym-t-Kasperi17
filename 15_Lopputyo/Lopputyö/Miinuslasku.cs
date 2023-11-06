@@ -30,7 +30,7 @@ namespace Lopputyö
             button1.Click += new System.EventHandler(UusiPeli_Click);
             LataaParasTulos();
             lasku1();
-            musiikki();
+            
             
         }
         
@@ -45,6 +45,7 @@ namespace Lopputyö
                 label5.Text = "Paras tulos: " + parasTulos;
 
                 TallennaParasTulos();
+                //Tarkistetaan saiko käyttäjä uuden tuloksen.
             }
 
         }
@@ -59,6 +60,7 @@ namespace Lopputyö
             {
                 MessageBox.Show("Virhe tallennettaessa tulosta: " + ex.Message, "Virhe", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            //tallenetaan paras tulos teksti tiedostoon.
         }
 
         private void LataaParasTulos()
@@ -78,29 +80,10 @@ namespace Lopputyö
                 {
                     MessageBox.Show("Virhe ladattaessa tulosta: " + ex.Message, "Virhe", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                //Tarkastetaan onko parastulosto olemassa tai saatu ja jos on niin katsotaan se.
             }
         }
-        private void tallennaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SaveFileDialog tallenna = new SaveFileDialog();
-            if (tallenna.ShowDialog() == DialogResult.OK)
-            {
-                string tiedostoNimi = tallenna.FileName;
-                string sisältö = Tulos.Text;
-
-                try
-                {
-                    File.WriteAllText(tiedostoNimi, sisältö);
-                    MessageBox.Show("Tiedosto tallennettu onnistuneesti.", "Tallennus onnistui", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Virhe tallennettaessa tiedostoa: " + ex.Message, "Virhe", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    
-                }
-                
-            }
-        }
+       
         private void lasku1()
         {
             if (kysymykset < 11)
@@ -111,7 +94,7 @@ namespace Lopputyö
                 Lasku.Text = ensimmainenLuku + " - " + toinenLuku + " = ";
                 textBox1.Text = "";
                 kysymykset++;
-                
+                //luodaan laskut ja määritellään oikea vastaus
             }
             if (kysymykset == 11)
             {
@@ -133,6 +116,7 @@ namespace Lopputyö
                     }
                     lasku1();
                     tulos();
+                    //Tarkistetaan menikö lasku oikean ja luodaan uusi lasku.
                 }
             }
 
@@ -141,13 +125,13 @@ namespace Lopputyö
         private void tulos()
         {
             Tulos.Text = oikeinVastatut + " / 10";
-            
         }
         private void ResetoiEnnätys_Click(object sender, EventArgs e)
         {
             parasTulos = 0;
             label5.Text = "Paras tulos: " + parasTulos;
             TallennaParasTulos();
+            //Resetoidaan ennätys.
         }
         
 
@@ -157,11 +141,8 @@ namespace Lopputyö
             oikeinVastatut = 0;
             lasku1();
             tulos();
+            //aloitetaan uusipeli
         }
-
-        
-
-        
 
         private void takaisinPäävalikkoonToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -170,10 +151,6 @@ namespace Lopputyö
             form1.Show();
             
         }
-        private void musiikki()
-        {
-            SoundPlayer musa = new SoundPlayer(Lopputyö.Properties.Resources.for_elevator_jazz_music_124005);
-            musa.Play();
-        }       
+          
     }
 }

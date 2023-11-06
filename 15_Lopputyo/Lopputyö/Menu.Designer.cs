@@ -161,19 +161,19 @@
             // 
             // Vahvista
             // 
-            this.Vahvista.Location = new System.Drawing.Point(52, 171);
+            this.Vahvista.Location = new System.Drawing.Point(26, 171);
             this.Vahvista.Name = "Vahvista";
-            this.Vahvista.Size = new System.Drawing.Size(100, 43);
+            this.Vahvista.Size = new System.Drawing.Size(169, 43);
             this.Vahvista.TabIndex = 6;
-            this.Vahvista.Text = "button1";
+            this.Vahvista.Text = "Kirjaudu/Rekisteröidy";
             this.Vahvista.UseVisualStyleBackColor = true;
             this.Vahvista.Click += new System.EventHandler(this.Vahvista_Click);
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(52, 120);
+            this.textBox1.Location = new System.Drawing.Point(26, 120);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 26);
+            this.textBox1.Size = new System.Drawing.Size(169, 26);
             this.textBox1.TabIndex = 7;
             // 
             // Menu

@@ -15,7 +15,6 @@ namespace Lopputyö
     public partial class Kertolasku : Form
     {
         public static Kertolasku instance;
-        private SoundPlayer musa;
         private int kysymykset;
         private int ensimmainenLuku;
         private int toinenLuku;
@@ -30,7 +29,6 @@ namespace Lopputyö
             instance = this;
             button1.Click += new System.EventHandler(UusiPeli_Click);
             LataaParasTulos();
-            Musiikki();
             lasku1();
         }
         
@@ -46,39 +44,14 @@ namespace Lopputyö
                 Lasku.Text = ensimmainenLuku + " * " + toinenLuku + " = ";
                 Syötälasku.Text = "";
                 kysymykset++;
-
+                //Luodaan random laskut ja määritellään oikea vastaus.
             }
             if (kysymykset == 11)
             {
                 MessageBox.Show("Olet ratkaissut 10 kysymystä");
             }
-
-        }
-        private void Vastaus_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                if (kysymykset < 11)
-                {
-                    if (Syötälasku.Text == vastaus.ToString())
-                    {
-                        
-                        oikeinVastatut++; // Kasvata oikein vastattujen kysymysten määrää
-                        PelaajaSaavuttiUudenTuloksen(oikeinVastatut);
-                    }
-                    lasku1();
-                    Tulos1();
-
-                }
-            }
-
-
         }
 
-        private void Tulos1()
-        {
-            Tulos.Text = oikeinVastatut + " / 10";
-        }
         public void PaivitaParasTulos(int uusiTulos)
         {
             if (uusiTulos > parasTulos)
@@ -86,6 +59,7 @@ namespace Lopputyö
                 parasTulos = uusiTulos;
                 label5.Text = "Paras tulos: " + parasTulos;
                 TallennaParasTulos();
+                //Tarkistetaan saiko pelaaja uuden tuloksen ja jos sai niin tallennetaan se.
             }
          }
         private void PelaajaSaavuttiUudenTuloksen(int uusiTulos)
@@ -109,7 +83,7 @@ namespace Lopputyö
                 {
                     MessageBox.Show("Virhe ladattaessa tulosta: ");
                 }
-
+                //Paras tulos tiedosto tarkistetaan ja sieltä otetaan paras tulos.
             }
         }
 
@@ -126,26 +100,33 @@ namespace Lopputyö
             }
         }
 
-
-        private void tallennaToolStripMenuItem_Click(object sender, EventArgs e)
+        private void Vastaus_KeyDown(object sender, KeyEventArgs e)
         {
-            SaveFileDialog tallenna = new SaveFileDialog();
-            if (tallenna.ShowDialog() == DialogResult.OK)
+            if (e.KeyCode == Keys.Enter)
             {
-                string tiedostoNimi = tallenna.FileName;
-                string sisältö = Tulos.Text;
-
-                try
+                if (kysymykset < 11)
                 {
-                    File.WriteAllText(tiedostoNimi, sisältö);
-                    MessageBox.Show("Tiedosto tallennettu onnistuneesti.", "Tallennus onnistui", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Virhe tallennettaessa tiedostoa: " + ex.Message, "Virhe", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (Syötälasku.Text == vastaus.ToString())
+                    {
+                        
+                        oikeinVastatut++;
+                        PelaajaSaavuttiUudenTuloksen(oikeinVastatut);
+                    }
+                    lasku1();
+                    Tulos1();
+                    //Tarkistetaan enteriä painamalla onko vastaus oikea.
                 }
             }
+
+
         }
+
+        private void Tulos1()
+        {
+            Tulos.Text = oikeinVastatut + " / 10";
+        }
+        
+
 
         private void ResetoiTulos_Click(object sender, EventArgs e)
         {
@@ -160,11 +141,6 @@ namespace Lopputyö
             oikeinVastatut = 0;
             lasku1();
             Tulos1();
-        }
-        private void Musiikki()
-        {
-            SoundPlayer musa = new SoundPlayer(Lopputyö.Properties.Resources.for_elevator_jazz_music_124005);
-            musa.Play();
         }
         private void päävalikkoonToolStripMenuItem_Click(object sender, EventArgs e)
         {

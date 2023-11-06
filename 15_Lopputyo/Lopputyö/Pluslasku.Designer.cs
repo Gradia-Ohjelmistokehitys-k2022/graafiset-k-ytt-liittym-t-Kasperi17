@@ -131,7 +131,7 @@
             this.tallennaToolStripMenuItem.Name = "tallennaToolStripMenuItem";
             this.tallennaToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.tallennaToolStripMenuItem.Text = "Tallenna";
-            this.tallennaToolStripMenuItem.Click += new System.EventHandler(this.tallennaToolStripMenuItem_Click);
+            
             // 
             // Ennätys
             // 

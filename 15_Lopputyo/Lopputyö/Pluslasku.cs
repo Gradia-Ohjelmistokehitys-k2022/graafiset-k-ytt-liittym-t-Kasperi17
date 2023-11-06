@@ -13,7 +13,6 @@ namespace Lopputyö
     {
         public static Pluslasku instance;
         private Random random = new Random();
-        private SoundPlayer musa;
         private int kysymykset;
         private int ensimmainenLuku;
         private int toinenLuku;
@@ -45,6 +44,7 @@ namespace Lopputyö
                 Lasku.Text = ensimmainenLuku + " + " + toinenLuku + " = ";
                 Syötalasku1.Text = "";
                 kysymykset++;
+                //luodaan randomisti laskut ja katsotaan mikä on oikea vastaus
 
             }
             if (kysymykset == 11)
@@ -68,6 +68,7 @@ namespace Lopputyö
                     }
                     Lasku1();
                     Tulos1();
+                    //tarkistetaan oikea vastaus ja luodaan uusi lasku.
                 }
             }
 
@@ -100,6 +101,7 @@ namespace Lopputyö
                 parasTulos = uusiTulos;
                 Ennätys.Text = "Paras tulos: " + parasTulos;
                 TallennaParasTulos();
+                //Tarkistetaan saiko käyttä paremman tuloksen kuin viimeksi.
             }
         }
 
@@ -137,34 +139,7 @@ namespace Lopputyö
             }
         }
        
-        private void tallennaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SaveFileDialog tallenna = new SaveFileDialog();
-            tallenna.Filter = "Tekstitiedostot|*.txt|Kaikki tiedostot|*.*";
-
-            if (tallenna.ShowDialog() == DialogResult.OK)
-            {
-                string tiedostoNimi = tallenna.FileName;
-                string sisältö = label3.Text;
-
-                try
-                {
-                    File.WriteAllText(tiedostoNimi, sisältö);
-                    MessageBox.Show("Tiedosto tallennettu onnistuneesti.");
-                }
-                catch (Exception )
-                {
-                    MessageBox.Show("Virhe tallennettaessa tiedostoa: ");
-                }
-
-            }
-
-        }
-
-
-
-
-
+       
         private void päävalikkoonToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
