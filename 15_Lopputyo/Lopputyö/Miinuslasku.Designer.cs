@@ -33,12 +33,12 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.Lasku = new System.Windows.Forms.Label();
             this.Tulos = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.UusiPeli = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.suljeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.takaisinPäävalikkoonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tallennaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label5 = new System.Windows.Forms.Label();
+            this.Ennätys = new System.Windows.Forms.Label();
             this.ResetoiEnnätys = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -85,16 +85,16 @@
             this.Tulos.TabIndex = 3;
             this.Tulos.Text = "0 / 10";
             // 
-            // button1
+            // UusiPeli
             // 
-            this.button1.Location = new System.Drawing.Point(354, 337);
-            this.button1.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(134, 51);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Uusi peli";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.UusiPeli_Click);
+            this.UusiPeli.Location = new System.Drawing.Point(354, 337);
+            this.UusiPeli.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
+            this.UusiPeli.Name = "UusiPeli";
+            this.UusiPeli.Size = new System.Drawing.Size(134, 51);
+            this.UusiPeli.TabIndex = 4;
+            this.UusiPeli.Text = "Uusi peli";
+            this.UusiPeli.UseVisualStyleBackColor = true;
+            this.UusiPeli.Click += new System.EventHandler(this.UusiPeli_Click);
             // 
             // menuStrip1
             // 
@@ -130,14 +130,14 @@
             this.tallennaToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.tallennaToolStripMenuItem.Text = "Tallenna";
             // 
-            // label5
+            // Ennätys
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(20, 169);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(67, 20);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Ennätys";
+            this.Ennätys.AutoSize = true;
+            this.Ennätys.Location = new System.Drawing.Point(20, 169);
+            this.Ennätys.Name = "Ennätys";
+            this.Ennätys.Size = new System.Drawing.Size(67, 20);
+            this.Ennätys.TabIndex = 9;
+            this.Ennätys.Text = "Ennätys";
             // 
             // ResetoiEnnätys
             // 
@@ -157,8 +157,8 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(992, 941);
             this.Controls.Add(this.ResetoiEnnätys);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.Ennätys);
+            this.Controls.Add(this.UusiPeli);
             this.Controls.Add(this.Tulos);
             this.Controls.Add(this.Lasku);
             this.Controls.Add(this.textBox1);
@@ -182,12 +182,12 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label Lasku;
         private System.Windows.Forms.Label Tulos;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button UusiPeli;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem suljeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem takaisinPäävalikkoonToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tallennaToolStripMenuItem;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label Ennätys;
         private System.Windows.Forms.Button ResetoiEnnätys;
     }
 }

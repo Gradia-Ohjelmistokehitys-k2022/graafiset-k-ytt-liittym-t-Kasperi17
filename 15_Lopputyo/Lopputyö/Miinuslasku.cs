@@ -17,25 +17,24 @@ namespace Lopputyö
     {
         private Random random = new Random();
         public static Miinuslasku instance;
-        private SoundPlayer musa;
         private int kysymykset;
         private int ensimmainenLuku;
         private int toinenLuku;
         private int vastaus;
         int oikeinVastatut = 0;
-        private int parasTulos = 0; 
+        private int parasTulos = 0;
+        private string parhaatTulokset = "parhaat miinuslaskut.txt";
         public Miinuslasku()
         {
             InitializeComponent();
             instance = this;
-            button1.Click += new System.EventHandler(UusiPeli_Click);
-            LataaParasTulos();
+            UusiPeli.Click += new System.EventHandler(UusiPeli_Click);
+            parasTulos = Hyöty.LataaParasTulos(parhaatTulokset);
             lasku1();
-            
-            
+            Ennätys.Text = "Paras tulos: " + parasTulos;
         }
         
-        
+
 
 
         private void PelaajaSaavuttiUudenTuloksen(int uusiTulos)
@@ -43,37 +42,12 @@ namespace Lopputyö
             if (uusiTulos > parasTulos)
             {
                 parasTulos = uusiTulos;
-                label5.Text = "Paras tulos: " + parasTulos;
-
-                Hyöty.TallennaParasTulos(parasTulos, "parhaat miinuslaskut.txt");
-                //Tarkistetaan saiko käyttäjä uuden tuloksen.
+                Hyöty.TallennaParasTulos(parasTulos, parhaatTulokset);
+                Ennätys.Text = "Paras tulos: " + parasTulos;
             }
 
         }
 
-   
-
-        private void LataaParasTulos()
-        {
-            if (File.Exists("parastulos.txt"))
-            {
-                try
-                {
-                    string tallennettuTulos = File.ReadAllText("parastulos.txt");
-                    if (int.TryParse(tallennettuTulos, out int tulos))
-                    {
-                        parasTulos = tulos;
-                        label5.Text = "Paras tulos: " + parasTulos;
-                    }
-                }
-                catch (IOException ex)
-                {
-                    MessageBox.Show("Virhe ladattaessa tulosta: " + ex.Message, "Virhe", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                //Tarkastetaan onko parastulosto olemassa tai saatu ja jos on niin katsotaan se.
-            }
-        }
-       
         private void lasku1()
         {
             if (kysymykset < 11)
@@ -119,7 +93,7 @@ namespace Lopputyö
         private void ResetoiEnnätys_Click(object sender, EventArgs e)
         {
             parasTulos = 0;
-            label5.Text = "Paras tulos: " + parasTulos;
+            Ennätys.Text = "Paras tulos: " + parasTulos;
             Hyöty.TallennaParasTulos(parasTulos, "parhaat pluslasku tulokset.txt");
             //Resetoidaan ennätys.
         }

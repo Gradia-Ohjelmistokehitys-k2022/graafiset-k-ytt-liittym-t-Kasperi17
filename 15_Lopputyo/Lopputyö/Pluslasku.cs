@@ -22,18 +22,15 @@ namespace Lopputyö
         private int vastaus;
         int oikeinVastatut = 0;
         private int parasTulos = 0;
-        private string kayttajaNimi;
-        
+        private string parhaatTulokset = "parhaat pluslaskut.txt";
         public Pluslasku()
         {
             InitializeComponent();
             instance = this;
             uusiPeli.Click += new System.EventHandler(uusiPeli_Click);
-            LataaParasTulos();
-            musiikki();
+            parasTulos = Hyöty.LataaParasTulos(parhaatTulokset);
             Lasku1();
-            string kayttajaNimi = Environment.UserName;
-
+            Ennätys.Text = "Paras tulos: " + parasTulos;
         }
 
 
@@ -102,10 +99,9 @@ namespace Lopputyö
             if (uusiTulos > parasTulos)
             {
                 parasTulos = uusiTulos;
-                Ennätys.Text = "Paras tulos: " + parasTulos;
-                //TallennaParasTulos();
-                //Tarkistetaan saiko käyttä paremman tuloksen kuin viimeksi.
-                Hyöty.TallennaParasTulos(parasTulos, "parhaat pluslasku tulokset.txt");
+                Hyöty.TallennaParasTulos(parasTulos, parhaatTulokset);
+                Ennätys.Text = "Paras tulos: " + parhaatTulokset;
+                
             }
         }
 
@@ -114,29 +110,6 @@ namespace Lopputyö
             PaivitaParasTulos(uusiTulos);
         }
 
-
-        
-        private void LataaParasTulos()
-        {
-            if (File.Exists(kayttajaNimi + "parastulos3.txt"))
-            {
-                try
-                {
-                    string tallennettuTulos = File.ReadAllText("parastulos3.txt");
-                    if (int.TryParse(tallennettuTulos, out int tulos))
-                    {
-                        parasTulos = tulos;
-                        Ennätys.Text = "Ennätys tulos: " + parasTulos;
-                    }
-                }
-                catch (IOException)
-                {
-                    MessageBox.Show("Virhe ladattaessa tulosta: ");
-                }
-            }
-        }
-       
-       
         private void päävalikkoonToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -145,16 +118,9 @@ namespace Lopputyö
             
             
         }
-        private void musiikki()
-        {
-            SoundPlayer musa = new SoundPlayer(Lopputyö.Properties.Resources.for_elevator_jazz_music_124005);
-            //musa.Play();
-        }
+        
 
-        private void Lasku_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         
     }

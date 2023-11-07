@@ -64,7 +64,7 @@
             this.Lasku.Size = new System.Drawing.Size(43, 18);
             this.Lasku.TabIndex = 1;
             this.Lasku.Text = "lasku";
-            this.Lasku.Click += new System.EventHandler(this.Lasku_Click);
+            
             // 
             // Syötalasku1
             // 

@@ -21,8 +21,7 @@ namespace Lopputyö
                 File.WriteAllText(tiedostoNimi, parasTulos.ToString());
             }
             catch (IOException) { MessageBox.Show("Virhe tallennettaessa tulosta: "); }
-            string moi = Directory.GetCurrentDirectory();
-
+            //Tallenetaan parastulos tekstitiedostoon.
         }
         public static int LataaParasTulos(string tiedostoNimi)
         {
@@ -41,7 +40,7 @@ namespace Lopputyö
                 {
                     MessageBox.Show("Virhe ladattaessa tulosta: ");
                 }
-                
+                //ladataan paras tulos tiedostosta ja tallenetaan se parastulos muuttujaan
             }
             return 0;
 

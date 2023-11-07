@@ -22,7 +22,7 @@ namespace Lopputyö
         int oikeinVastatut = 0;
         private int parasTulos = 0;
         private Random random = new Random();
-        private string parhaatlaskut = "";
+        private string parhaatTulokset = "parhaat kertolaskut.txt";
         
        
         public Kertolasku()
@@ -30,8 +30,9 @@ namespace Lopputyö
             InitializeComponent();
             instance = this;
             button1.Click += new System.EventHandler(UusiPeli_Click);
-            parasTulos = Hyöty.LataaParasTulos("parhaat kertolaskut.txt");
+            parasTulos = Hyöty.LataaParasTulos(parhaatTulokset);
             lasku1();
+            Ennätys.Text = "Paras tulos: " + parasTulos;
         }
         
 
@@ -59,8 +60,9 @@ namespace Lopputyö
             if (uusiTulos > parasTulos)
             {
                 parasTulos = uusiTulos;
-                label5.Text = "Paras tulos: " + parasTulos;
-                Hyöty.TallennaParasTulos(parasTulos, "parhaat kertolaskut.txt");
+                Hyöty.TallennaParasTulos(parasTulos, parhaatTulokset);
+                Ennätys.Text = "Paras tulos: " + parasTulos;
+                
                 //Tarkistetaan saiko pelaaja uuden tuloksen ja jos sai niin tallennetaan se.
             }
          }
@@ -68,27 +70,8 @@ namespace Lopputyö
         {
             PaivitaParasTulos(uusiTulos);
         }
-        private void LataaParasTulos()
-        {
-            if (File.Exists("parastulos1.txt"))
-            {
-                try
-                {
-                    string tallennettuTulos = File.ReadAllText("parastulos1.txt");
-                    if (int.TryParse(tallennettuTulos, out int tulos))
-                    {
-                        parasTulos = tulos;
-                        label5.Text = "Paras tulos: " + parasTulos;
-                    }
-                }
-                catch (IOException)
-                {
-                    MessageBox.Show("Virhe ladattaessa tulosta: ");
-                }
-                //Paras tulos tiedosto tarkistetaan ja sieltä otetaan paras tulos.
-            }
-        }
-
+       
+       
 
         
         
@@ -124,7 +107,7 @@ namespace Lopputyö
         private void ResetoiTulos_Click(object sender, EventArgs e)
         {
             parasTulos = 0;
-            label5.Text = "Paras tulos: " + parasTulos;
+            Ennätys.Text = "Paras tulos: " + parasTulos;
             Hyöty.TallennaParasTulos(parasTulos, "parhaat pluslasku tulokset.txt");
         }
 
