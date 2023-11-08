@@ -34,12 +34,14 @@ namespace Lopputyö
         }
 
 
+
+
         private void Lasku1()
         {
             if (kysymykset < 11)
-            {
-                ensimmainenLuku = random.Next(1, 10);
-                toinenLuku = random.Next(1, 10);
+            {   
+                
+                
                 vastaus = ensimmainenLuku + toinenLuku;
                 Lasku.Text = ensimmainenLuku + " + " + toinenLuku + " = ";
                 Syötalasku1.Text = "";
@@ -49,10 +51,11 @@ namespace Lopputyö
             }
             if (kysymykset == 11)
             {
-                MessageBox.Show("Olet ratkaissut 10 kysymystä");
+                MessageBox.Show("Olet ratkaissut 10 kysymystä. Peli päättyi.");
             }
 
         }
+
         private void Vastaus_KeyDown(object sender, KeyEventArgs e)
         {
 
@@ -77,7 +80,7 @@ namespace Lopputyö
         }
          private void Tulos1()
          {
-            label3.Text = oikeinVastatut + " / 10";
+            label3.Text = "Pisteitä: " + oikeinVastatut + " / 10";
          }
 
         private void uusiPeli_Click(object sender, EventArgs e)
@@ -100,7 +103,7 @@ namespace Lopputyö
             {
                 parasTulos = uusiTulos;
                 Hyöty.TallennaParasTulos(parasTulos, parhaatTulokset);
-                Ennätys.Text = "Paras tulos: " + parhaatTulokset;
+                Ennätys.Text = "Paras tulos: " + parasTulos;
                 
             }
         }
@@ -118,11 +121,25 @@ namespace Lopputyö
             
             
         }
-        
 
-        
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+            string vaikeustaso = comboBox1.SelectedItem.ToString();
 
-        
+           
+            if (vaikeustaso == "Helppo")
+            {
+                ensimmainenLuku = random.Next(1, 10);
+                toinenLuku = random.Next(1, 10);
+            }
+            else if (vaikeustaso == "Vaikea")
+            {
+                ensimmainenLuku = random.Next(1, 50);
+                toinenLuku = random.Next(1, 50);
+            }
+            
+        }
     }
     
 

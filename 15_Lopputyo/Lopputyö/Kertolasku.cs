@@ -70,12 +70,7 @@ namespace Lopputyö
         {
             PaivitaParasTulos(uusiTulos);
         }
-       
-       
-
-        
-        
-
+    
         private void Vastaus_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
