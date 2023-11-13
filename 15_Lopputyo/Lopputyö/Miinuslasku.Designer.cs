@@ -40,6 +40,7 @@
             this.tallennaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Ennätys = new System.Windows.Forms.Label();
             this.ResetoiEnnätys = new System.Windows.Forms.Button();
+            this.Vaikeustaso = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -72,13 +73,13 @@
             this.Lasku.Size = new System.Drawing.Size(43, 18);
             this.Lasku.TabIndex = 2;
             this.Lasku.Text = "lasku";
-            this.Lasku.Click += new System.EventHandler(this.Lasku_Click);
+            
             // 
             // Tulos
             // 
             this.Tulos.AutoSize = true;
             this.Tulos.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Tulos.Location = new System.Drawing.Point(847, 76);
+            this.Tulos.Location = new System.Drawing.Point(493, 53);
             this.Tulos.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.Tulos.Name = "Tulos";
             this.Tulos.Size = new System.Drawing.Size(44, 18);
@@ -104,7 +105,7 @@
             this.suljeToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(992, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(565, 24);
             this.menuStrip1.TabIndex = 8;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -150,12 +151,25 @@
             this.ResetoiEnnätys.UseVisualStyleBackColor = true;
             this.ResetoiEnnätys.Click += new System.EventHandler(this.ResetoiEnnätys_Click);
             // 
+            // Vaikeustaso
+            // 
+            this.Vaikeustaso.FormattingEnabled = true;
+            this.Vaikeustaso.Items.AddRange(new object[] {
+            "Helppo",
+            "Vaikea"});
+            this.Vaikeustaso.Location = new System.Drawing.Point(162, 48);
+            this.Vaikeustaso.Name = "Vaikeustaso";
+            this.Vaikeustaso.Size = new System.Drawing.Size(71, 28);
+            this.Vaikeustaso.TabIndex = 11;
+            this.Vaikeustaso.SelectedIndexChanged += new System.EventHandler(this.Vaikeustaso_SelectedIndexChanged);
+            // 
             // Miinuslasku
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(992, 941);
+            this.ClientSize = new System.Drawing.Size(565, 466);
+            this.Controls.Add(this.Vaikeustaso);
             this.Controls.Add(this.ResetoiEnnätys);
             this.Controls.Add(this.Ennätys);
             this.Controls.Add(this.UusiPeli);
@@ -189,5 +203,6 @@
         private System.Windows.Forms.ToolStripMenuItem tallennaToolStripMenuItem;
         private System.Windows.Forms.Label Ennätys;
         private System.Windows.Forms.Button ResetoiEnnätys;
+        private System.Windows.Forms.ComboBox Vaikeustaso;
     }
 }

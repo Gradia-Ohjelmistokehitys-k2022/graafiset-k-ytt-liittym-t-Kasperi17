@@ -116,7 +116,9 @@ namespace Lopputyö
             
         }
 
-        private void Lasku_Click(object sender, EventArgs e)
+        
+
+        private void Vaikeustaso_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

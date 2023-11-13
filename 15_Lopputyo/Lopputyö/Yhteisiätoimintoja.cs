@@ -6,6 +6,7 @@ using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Lopputyö
 {
@@ -13,7 +14,7 @@ namespace Lopputyö
 
     public class Hyöty
     {
-
+        public static Random random = new Random();
         public static void TallennaParasTulos(int parasTulos, string tiedostoNimi)
         {
             try
@@ -43,11 +44,22 @@ namespace Lopputyö
                 //ladataan paras tulos tiedostosta ja tallenetaan se parastulos muuttujaan
             }
             return 0;
+        }
+        public static void VaikeusTasonAsettaminen(string vaikeustaso, out int ensimmainenLuku, out int toinenLuku)
+        {   ensimmainenLuku = 0; toinenLuku = 0;
 
-
-
-
-
+            if (vaikeustaso == "Helppo")
+            {
+                ensimmainenLuku = random.Next(1, 10);
+                toinenLuku = random.Next(1, 10);
+                
+            }
+            else if (vaikeustaso == "Vaikea")
+            {
+                ensimmainenLuku = random.Next(1, 50);
+                toinenLuku = random.Next(1, 50);
+                
+            }
 
         }
     }

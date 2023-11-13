@@ -15,7 +15,6 @@ namespace Lopputyö
     public partial class Pluslasku : Form
     {
         public static Pluslasku instance;
-        private Random random = new Random();
         private int kysymykset;
         private int ensimmainenLuku;
         private int toinenLuku;
@@ -69,6 +68,7 @@ namespace Lopputyö
                         oikeinVastatut++;
                         PelaajaSaavuttiUudenTuloksen(oikeinVastatut);
                     }
+                    comboBox1_SelectedIndexChanged(sender, e);
                     Lasku1();
                     Tulos1();
                     //tarkistetaan oikea vastaus ja luodaan uusi lasku.
@@ -95,7 +95,7 @@ namespace Lopputyö
         {
             parasTulos = 0;
             Ennätys.Text = "Paras tulos: " + parasTulos;
-            Hyöty.TallennaParasTulos(parasTulos, "parhaat pluslasku tulokset.txt");
+            Hyöty.TallennaParasTulos(parasTulos, parhaatTulokset);
         }
         public void PaivitaParasTulos(int uusiTulos)
         {
@@ -125,20 +125,13 @@ namespace Lopputyö
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             
-            string vaikeustaso = comboBox1.SelectedItem.ToString();
-
-           
-            if (vaikeustaso == "Helppo")
-            {
-                ensimmainenLuku = random.Next(1, 10);
-                toinenLuku = random.Next(1, 10);
-            }
-            else if (vaikeustaso == "Vaikea")
-            {
-                ensimmainenLuku = random.Next(1, 50);
-                toinenLuku = random.Next(1, 50);
-            }
+           string vaikeustaso = comboBox1.SelectedItem.ToString();
+           Hyöty.VaikeusTasonAsettaminen(vaikeustaso, out ensimmainenLuku, out toinenLuku);
+           Lasku.Text = ensimmainenLuku + " + " + toinenLuku + " = ";
             
+
+
+
         }
     }
     
