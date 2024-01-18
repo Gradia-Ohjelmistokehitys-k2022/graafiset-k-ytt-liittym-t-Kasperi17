@@ -11,14 +11,13 @@ using System.Windows.Forms;
 using System.Media;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+//Matikkapeli kirjautumissysteemi vielä keskeneräinen.
 
 namespace Lopputyö
 {
     public partial class Menu : Form
     {   
         public static Menu instance;
-        private SoundPlayer musa;
-        private SoundPlayer musa2;
         private List<Pelaaja> pelaajat = new List<Pelaaja>();
 
         public Menu()
@@ -50,14 +49,14 @@ namespace Lopputyö
             this.Hide();
             form.Show();
         }
-
+        
         private void Form1_Load(object sender, EventArgs e)
         {
             
             string kayttajaNimi = Environment.UserName;
             TarkistaKayttajat();
 
-            label2.Text = "Kirjautunut käyttäjä:\n" + kayttajaNimi;
+            
         }
 
         private void tallennaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -67,20 +66,7 @@ namespace Lopputyö
             
         }
 
-        private void musiikki1ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SoundPlayer musa = new SoundPlayer(Lopputyö.Properties.Resources.Ketsa___Firstly);
-            musa.Play();
-            
-        }
-
-        private void musiikka2ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            
-            SoundPlayer musa2 = new SoundPlayer(Lopputyö.Properties.Resources.in_the_cafe_with_coffee_after_lunch_140_173156);
-            musa2.Play();
-           
-        }
+        
        
 
         private void Vahvista_Click(object sender, EventArgs e)

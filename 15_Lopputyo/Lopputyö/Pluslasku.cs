@@ -19,7 +19,7 @@ namespace Lopputyö
         private int ensimmainenLuku;
         private int toinenLuku;
         private int vastaus;
-        int oikeinVastatut = 0;
+        int oikeinVastatut = 1;
         private int parasTulos = 0;
         private string parhaatTulokset = "parhaat pluslaskut.txt";
         public Pluslasku()
